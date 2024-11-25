@@ -1,3 +1,5 @@
+
+
 document.addEventListener("DOMContentLoaded", (event) => {
     const IMAGE_WIDTH= 500;
     const DELAY= 3000;
