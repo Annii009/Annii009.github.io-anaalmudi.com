@@ -290,6 +290,7 @@ ul {
     font-family: "Advent pro", 'Times New Roman', Times, serif;
     text-align: right;
     font-size: 2.5rem;
+    text-align: center;
   
   }
 
@@ -356,8 +357,8 @@ ul {
     font-family: "Advent pro", 'Times New Roman', Times, serif;
     text-align: right;
     font-size: 5rem;
-    margin-right: 40px;
-  
+    margin-right: 50px;
+
   }
 
 
@@ -367,6 +368,7 @@ ul {
         font-family: "Advent pro", 'Times New Roman', Times, serif;
         text-align: right;
         font-size: 2rem;
+        margin-right: 30px;
       }
     
 }
@@ -420,7 +422,7 @@ ul {
     margin: center;
     font-size: 1.2rem;
     line-height: 1.6;
-    text-align: justify;
+    text-align: center;
     
 }
 
