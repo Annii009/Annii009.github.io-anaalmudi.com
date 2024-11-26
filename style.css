@@ -385,26 +385,26 @@ ul {
   p {
     color: rgb(255, 255, 255);
     font-family: "Georgia", "Times New Roman", Times, serif;
-    max-width: 100%;
+    max-width: 80%;
     margin: center;
     font-size: 1.2rem;
     line-height: 1.6;
     text-align: justify;
-    padding: center;
+    
 }
 
 
 @media (max-width: 768px) {
     p {
         font-size: 0.6rem;
-        max-width: 100%;
+        max-width: 80%;
     }
 }
 
 
 @media (max-width: 480px) {
     p {
-
+        max-width: 80%;
         font-size: 0.7rem;
         line-height: 1.4; 
     }
