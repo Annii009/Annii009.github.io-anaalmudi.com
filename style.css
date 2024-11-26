@@ -94,7 +94,7 @@ body {
   
   .button2 {
       top: 20px;
-      left: 700px;
+      left: 70px;
   }
   
   .button3 {
@@ -1093,12 +1093,12 @@ textarea {
 
 @media (max-width: 1920px) {
   .contact-form {
-    background-color: rgba(115, 115, 115, 0.453);
+    background-color: rgba(115, 115, 115, 0);
     padding: 20px;
     border-radius: 10px;
     width: 50%;
     max-width: 400px;
     z-index: 1;
-    margin-right: 170px;
+    margin-right: 200px;
 }
 }
