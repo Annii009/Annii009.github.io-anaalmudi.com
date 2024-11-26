@@ -82,6 +82,30 @@ body {
     left: 350px;
 }
 
+
+
+
+
+@media (max-width: 1920px) {
+  .button1 {
+      top: 20px;
+      left: 10px;
+  }
+  
+  .button2 {
+      top: 20px;
+      left: 700px;
+  }
+  
+  .button3 {
+      top: 20px;
+      left: 180px;
+  }
+}
+
+
+
+
 @media (max-width: 600px) {
     .button1 {
         top: 20px;
@@ -1061,4 +1085,20 @@ textarea {
 }
 
 
+}
+
+
+
+
+
+@media (max-width: 1920px) {
+  .contact-form {
+    background-color: rgba(115, 115, 115, 0.453);
+    padding: 20px;
+    border-radius: 10px;
+    width: 50%;
+    max-width: 400px;
+    z-index: 1;
+    margin-right: 170px;
+}
 }
