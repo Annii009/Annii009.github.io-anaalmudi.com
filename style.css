@@ -298,6 +298,7 @@ ul {
   @media (max-width: 768px) {
     .title {
         font-size: 2.3rem;
+        text-align: center;
       }
     
 }
@@ -933,7 +934,7 @@ body, html {
     background-color: rgba(242, 242, 242, 0); 
     padding: 20px;
     border-radius: 10px;
-    width: 33%;
+    
     max-width: 400px;
     z-index: 1;
     margin-right: 120px;
@@ -1098,18 +1099,7 @@ textarea {
 
 
 
-
-@media (max-width: 1920px) {
-  .contact-form {
-    background-color: rgba(242, 242, 242, 0); 
-    padding: 20px;
-    border-radius: 10px;
-    width: 33%;
-    max-width: 400px;
-    z-index: 1;
-    margin-right: 195px;
-}
-}
++
 
 
  
