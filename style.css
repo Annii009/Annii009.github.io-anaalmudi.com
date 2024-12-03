@@ -547,6 +547,7 @@ ul {
     background-color: #f8f4ee;
     transform: rotateX(-90deg);
     transform-origin: bottom;
+    transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   }
   
   .card:hover .card__content {
@@ -567,7 +568,7 @@ ul {
   .card__description {
     margin: 10px 0 0;
     font-size: 14px;
-    color: black;
+    color: #777;
     line-height: 1.4;
   }
   
@@ -596,9 +597,9 @@ ul {
   .card8,
   .card9 {
     max-width: 350px;
-    -webkit-box-shadow: 0px 10px 30px 0px rgba(0, 0, 0, 0.26);
-    -moz-box-shadow: 0px 10px 30px 0px rgba(0, 0, 0, 0.26);
-    box-shadow: 0px 10px 20px 0px rgba(0, 0, 0, 0.26);
+    -webkit-box-shadow: 0px 10px 30px 0px rgba(163, 163, 163, 0.26);
+    -moz-box-shadow: 0px 10px 30px 0px rgba(164, 164, 164, 0.26);
+    box-shadow: 0px 10px 20px 0px rgba(157, 157, 157, 0.26);
   }
   
   .header-img2 {
@@ -625,9 +626,9 @@ ul {
   .card17,
   .card18 {
     max-width: 350px;
-    -webkit-box-shadow: 0px 10px 30px 0px rgba(0, 0, 0, 0.26);
-    -moz-box-shadow: 0px 10px 30px 0px rgba(0, 0, 0, 0.26);
-    box-shadow: 0px 10px 20px 0px rgba(0, 0, 0, 0.26);
+    -webkit-box-shadow: 0px 10px 30px 0px rgba(165, 165, 165, 0.26);
+    -moz-box-shadow: 0px 10px 30px 0px rgba(155, 155, 155, 0.26);
+    box-shadow: 0px 10px 20px 0px rgba(150, 150, 150, 0.26);
   }
   
   .header-img3 {
@@ -697,6 +698,7 @@ ul {
         background-color: #f8f4ee;
         transform: rotateX(-90deg);
         transform-origin: bottom;
+        transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
       }
       
       .card:hover .card__content {
