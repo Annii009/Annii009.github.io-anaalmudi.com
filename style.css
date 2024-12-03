@@ -604,9 +604,9 @@ ul {
   .card8,
   .card9 {
     max-width: 350px;
-    -webkit-box-shadow: 0px 10px 30px 0px rgba(163, 163, 163, 0.26);
-    -moz-box-shadow: 0px 10px 30px 0px rgba(164, 164, 164, 0.26);
-    box-shadow: 0px 10px 20px 0px rgba(157, 157, 157, 0.26);
+    -webkit-box-shadow: 0px 10px 30px 0px rgba(163, 163, 163, 0.571);
+    -moz-box-shadow: 0px 10px 30px 0px rgba(164, 164, 164, 0.493);
+    box-shadow: 0px 10px 20px 0px rgba(157, 157, 157, 0.453);
   }
   
   .header-img2 {
@@ -633,9 +633,9 @@ ul {
   .card17,
   .card18 {
     max-width: 350px;
-    -webkit-box-shadow: 0px 10px 30px 0px rgba(165, 165, 165, 0.26);
-    -moz-box-shadow: 0px 10px 30px 0px rgba(155, 155, 155, 0.26);
-    box-shadow: 0px 10px 20px 0px rgba(150, 150, 150, 0.26);
+    -webkit-box-shadow: 0px 10px 30px 0px rgba(165, 165, 165, 0.453);
+    -moz-box-shadow: 0px 10px 30px 0px rgba(155, 155, 155, 0.467);
+    box-shadow: 0px 10px 20px 0px rgba(150, 150, 150, 0.464);
   }
   
   .header-img3 {
@@ -755,9 +755,9 @@ ul {
       .card8,
       .card9 {
         max-width: 350px;
-        -webkit-box-shadow: 0px 10px 30px 0px rgba(0, 0, 0, 0.26);
-        -moz-box-shadow: 0px 10px 30px 0px rgba(0, 0, 0, 0.26);
-        box-shadow: 0px 10px 20px 0px rgba(0, 0, 0, 0.26);
+        -webkit-box-shadow: 0px 10px 30px 0px rgba(106, 106, 106, 0.481);
+        -moz-box-shadow: 0px 10px 30px 0px rgba(107, 107, 107, 0.452);
+        box-shadow: 0px 10px 20px 0px rgba(109, 109, 109, 0.507);
       }
       
       .header-img2 {
@@ -784,9 +784,9 @@ ul {
       .card17,
       .card18 {
         max-width: 350px;
-        -webkit-box-shadow: 0px 10px 30px 0px rgba(0, 0, 0, 0.26);
-        -moz-box-shadow: 0px 10px 30px 0px rgba(0, 0, 0, 0.26);
-        box-shadow: 0px 10px 20px 0px rgba(0, 0, 0, 0.26);
+        -webkit-box-shadow: 0px 10px 30px 0px rgba(108, 108, 108, 0.477);
+        -moz-box-shadow: 0px 10px 30px 0px rgba(97, 97, 97, 0.454);
+        box-shadow: 0px 10px 20px 0px rgba(107, 107, 107, 0.46);
       }
       
       .header-img3 {
