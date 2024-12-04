@@ -854,7 +854,7 @@ body, html {
     width: 33%;
     max-width: 400px;
     z-index: 1;
-    margin-right: 80px;
+    margin-right: 120px;
     
 }
 
@@ -1039,13 +1039,6 @@ body, html {
 
 
 .contact-form {
-    /* background-color: rgba(115, 115, 115, 0.453);
-    padding: 20px;
-    border-radius: 10px;
-    width: 50%;
-    max-width: 400px;
-    z-index: 1;
-    margin-right: 100px; */
     margin-right: 0;
     width: 100%;
 }
