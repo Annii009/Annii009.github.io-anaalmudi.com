@@ -108,16 +108,19 @@ body {
   .button1 {
     top: 20px;
     left: 10px;
+    font-size: 2vw;
   }
 
   .button2 {
     top: 20px;
-    left: 50px;
+    left: 65px;
+    font-size: 2vw;
   }
 
   .button3 {
     top: 20px;
-    left: 120px;
+    left: 150px;
+    font-size: 2vw;
   }
 }
 
@@ -1200,17 +1203,41 @@ textarea {
   }
 
   .footer-links {
-    justify-content: center;
+    flex: 2;
+    display: flex;
+    justify-content: center; 
+    padding: 10px;
   }
-
+  
   .footer-links ul {
-    flex-direction: column;
-    gap: 15px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 30px; 
   }
-
+  
+  .footer-links ul li {
+    display: inline-block;
+  }
+  
   .footer-links ul li a {
-    font-size: 40px;
+    color: white;
+    text-decoration: none;
+    font-size: 26px;
+    padding: 10px;
+    transition: color 0.3s ease;
   }
+  
+  .footer-links ul li a i {
+    font-size: 50px;  
+    margin-right: 10px; 
+  }
+  
+  .footer-links ul li a:hover {
+    color: #ffeac3;
+  }
+ 
 
   .footer-text h1 {
     font-size: 18px;
