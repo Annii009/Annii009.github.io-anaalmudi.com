@@ -735,13 +735,13 @@ img {
   .grid-container {
     display: grid;
     grid-template-columns: auto auto;
-    margin-left: 15px;
+    justify-content: center;
   }
 
   .grid-container2 {
     display: grid;
     grid-template-columns: auto;
-    margin-left: 45px;
+    justify-content: center;
   }
 
 
@@ -1187,8 +1187,12 @@ textarea {
 
 @media (max-width: 768px) {
   .footer {
-    flex-direction: column;
+    background-color: #000000;
+    color: white;
+    display: flex;
+    justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
   }
 
   .footer-logo img {
