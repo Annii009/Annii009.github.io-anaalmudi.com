@@ -69,17 +69,17 @@ body {
 
 .button1 {
   top: 20px;
-  
+  left: 20px;
 }
 
 .button2 {
-  top: 50px;
-  
+  top: 20px;
+  left: 270px;
 }
 
 .button3 {
-  top: 100px;
-  
+  top: 20px;
+  left: 620px;
 }
 
 
@@ -92,12 +92,12 @@ body {
 
   .button2 {
     top: 20px;
-    left: 200px;
+    left: 270px;
   }
 
   .button3 {
     top: 20px;
-    left: 500px;
+    left: 620px;
   }
 }
 
