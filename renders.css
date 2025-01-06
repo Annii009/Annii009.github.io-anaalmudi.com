@@ -355,11 +355,11 @@ body{
 
 .slider-container {
   position: relative;
-  width: 400px;
-  height: 550px;
+  width: 350px;
+  height: 450px;
   margin: auto;
   overflow: hidden;
-  border-radius: 10px;
+  border-radius: 7px;
   border: 10px solid #91766E; 
 }
   }
