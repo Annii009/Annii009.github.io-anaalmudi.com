@@ -431,18 +431,7 @@ textarea {
 
   @media (max-width: 768px) {
 
-    .sidebar { 
-    display: none; 
-    flex-direction: column; 
-  } 
-  .sidebar button { 
-    margin: 20px 20px; 
-  } 
-  .menu-icon { 
-    display: none; 
-    font-size: 30px; 
-    cursor: pointer; 
-  } 
+  
     .h1 {
         font-size: 1.8rem;
         text-align: center;
