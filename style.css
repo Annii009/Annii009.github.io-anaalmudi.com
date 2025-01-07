@@ -321,6 +321,14 @@ h4{
 
   @media (max-width: 768px) { 
 
+    .container {
+      display: flex;
+      flex-direction: column; 
+      justify-content: center;
+      align-items: center;
+      height: 70vh;
+  }
+
     .footer {
       background-color: #000000;
       color: white;
