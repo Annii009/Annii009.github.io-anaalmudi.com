@@ -282,6 +282,22 @@ body{
 
   @media (max-width: 768px) { 
 
+    .footer {
+      background-color: #000000;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-left: 30px;
+    }
+
+    .footer-logo img {
+      width: 90px;
+      height: auto;
+      
+    }
+
     .sidebar { 
       display: none; 
       flex-direction: column; 
@@ -291,8 +307,10 @@ body{
     } 
     .menu-icon { 
       display: none; 
-      font-size: 30px; 
+      font-size: 40px; 
       cursor: pointer; 
+      margin-left: 15px;
+      margin-top: 10px;
     } 
     .sidebar { 
       display: none; 
@@ -307,17 +325,17 @@ body{
     }
     
     .button2 {
-      top: 45px;
+      top: 50px;
       left: 20px;
     }
     
     .button3 {
-      top: 70px;
+      top: 80px;
       left: 20px;
     }
     
     .button4 {
-        top: 95px;
+        top: 105px;
         left: 20px;
     }
     
@@ -327,6 +345,7 @@ body{
     .button3,
     .button4 {
     font-size: 4.5vw;
+    background-color: #000000;
     }
 
     .h1 {
