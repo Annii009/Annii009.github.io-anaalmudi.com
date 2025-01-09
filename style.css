@@ -250,6 +250,7 @@ h4{
 }
 
 
+
 /*Footer styles*/
 .footer {
     background-color: #000000;
@@ -297,7 +298,6 @@ h4{
   .footer-links ul li a {
     color: white;
     text-decoration: none;
-    font-size: 26px;
     padding: 10px;
     transition: color 0.3s ease;
   }
