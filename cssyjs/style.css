@@ -1,0 +1,526 @@
+/*General body styles*/
+body{
+    background-color: #1b1c1e;
+    color: white;
+    margin: 0;
+    padding: 0;
+}
+
+/*Button styles*/
+.button1,
+.button2,
+.button3,
+.button4 {
+  font-size: 1.5vw;
+  color: #e1e1e1;
+  font-family: inherit;
+  cursor: pointer;
+  position: fixed;
+  border: none;
+  background: none;
+  text-transform: uppercase;
+  transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
+  transition-duration: 400ms;
+  transition-property: color;
+}
+
+
+.button1 {
+  top: 20px;
+  left: 20px;
+}
+
+.button2 {
+  top: 20px;
+  left: 230px;
+}
+
+.button3 {
+  top: 20px;
+  left: 450px;
+}
+
+.button4 {
+    top: 20px;
+    left: 640px;
+}
+
+/*Container styles*/
+.container {
+    display: flex;
+    flex-direction: column; 
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.h1 {
+    color: #e1e1e1;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 2.5rem;
+    text-align: center;
+    margin: 0; 
+}
+
+.title {
+    color: rgb(255, 255, 255);
+    font-family: "Advent pro", 'Times New Roman', Times, serif;
+    font-size: 8rem;
+    text-align: center;
+    margin: 10px 0;
+}
+
+.imagen1 {
+  border: 10px solid #91766E;
+    max-width: 50%; 
+    height: auto; 
+    margin: 10px 0; 
+}
+
+/* Contenedor principal */
+.container2 {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center; 
+    height: 100vh;
+    padding: 20px; 
+}
+
+
+.left {
+    flex: 1; 
+    text-align: center; 
+}
+
+
+.right {
+    flex: 1; 
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    
+}
+
+
+.imagen2 {
+    border-radius: 50%;
+    border: 10px solid #B7A7A9; 
+    width: 400px;
+    height: auto;
+}
+
+h2{
+    color: rgb(255, 255, 255);
+    font-family: "Advent pro", 'Times New Roman', Times, serif;
+    font-size: 5rem;
+    text-align: center;
+    margin: 10px 0;
+}
+
+.center-text{
+    color: #e1e1e1;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 1.5rem;
+    text-align: center;
+    margin: 0;
+}
+
+/* Contenedor principal */
+.container3 {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center; 
+    height: 100vh;
+    padding: 20px;
+}
+
+/* Contenedor del lado derecho */
+.right2 {
+    flex: 1; 
+    text-align: center; 
+} 
+
+/* Contenedor del lado izquierdo */
+.left2 {
+    flex: 1; 
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+}
+
+/* Contenedor de la imagen */
+.image-container {
+    position: relative;
+    text-align: center; 
+}
+
+/* Estilos para el h3 */
+.image-container h3 {
+    color: rgb(255, 255, 255);
+    font-family: "Advent pro", 'Times New Roman', Times, serif;
+    font-size: 1.5rem;
+    text-align: center; 
+    margin: 10px 0;
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1; 
+}
+
+
+.imagen4 {
+  border: 10px solid #91766E;
+    max-width: 30%; 
+    height: auto; 
+    margin: 10px 0; 
+}
+  
+
+/* Estilos para la imagen */
+.imagen3 {
+    border: 10px solid #91766E; 
+    width: 400px;
+    height: auto;
+    display: block;
+}
+
+h3{
+    color: rgb(255, 255, 255);
+    font-family: "Advent pro", 'Times New Roman', Times, serif;
+    font-size: 1.5rem;
+    text-align: left;
+    margin: 10px 0;
+}
+
+p{
+    color: #e1e1e1;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 1rem;
+    text-align: left;
+    margin: 0;
+}
+
+h5{
+    color: rgb(255, 255, 255);
+    font-family: "Advent pro", 'Times New Roman', Times, serif;
+    font-size: 2.7rem;
+    text-align: left;
+    margin: 10px 0;
+}
+
+h4{
+    color: rgb(255, 255, 255);
+    font-family: "Advent pro", 'Times New Roman', Times, serif;
+    font-size: 5rem;
+    text-align: center;
+    margin: 10px 0;
+}
+
+
+/*Footer styles*/
+.footer {
+    background-color: #1b1c1e;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  
+  .footer-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    flex-wrap: wrap;
+  }
+  
+  .footer-logo {
+    flex: 1;
+    display: flex;
+    justify-content: flex-start;
+    padding: 10px;
+  }
+  
+  .footer-logo img {
+    width: 120px;
+    height: auto;
+    
+  }
+  
+  .footer-links ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 30px; 
+    
+  }
+  
+  .footer-links ul li {
+    display: inline-block;
+  }
+  
+  .footer-links ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 26px;
+    padding: 10px;
+    transition: color 0.3s ease;
+  }
+  
+  .footer-links ul li a i {
+    font-size: 50px;  
+    margin-right: 10px; 
+    
+  }
+  
+  .footer-links ul li a:hover {
+    color: #ffeac3;
+  }
+  
+  .footer-text h5 {
+    margin-right: 20px;
+    font-size: 1.2em;
+  }
+  
+
+  @media (max-width: 768px) { 
+
+    .container {
+      display: flex;
+      flex-direction: column; 
+      justify-content: center;
+      align-items: center;
+      height: 70vh;
+  }
+
+    .footer {
+      background-color: #1b1c1e;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-left: 30px;
+    }
+    
+  .sidebar { 
+    display: none; 
+    flex-direction: column; 
+  } 
+  .sidebar button { 
+    margin: 20px 20px; 
+  } 
+  .menu-icon { 
+    display: none; 
+    font-size: 40px; 
+    cursor: pointer; 
+    margin-left: 15px;
+    margin-top: 10px;
+  } 
+    .sidebar { 
+      display: none; 
+    } 
+    .menu-icon { 
+      display: block; 
+    } 
+
+    .button1 {
+      top: 20px;
+      left: 20px;
+    }
+    
+    .button2 {
+      top: 50px;
+      left: 20px;
+    }
+    
+    .button3 {
+      top: 80px;
+      left: 20px;
+    }
+    
+    .button4 {
+        top: 105px;
+        left: 20px;
+    }
+    
+
+    .button1,
+    .button2,
+    .button3,
+    .button4 {
+    font-size: 4.5vw;
+    background-color: #000000;
+    }
+
+    .title {
+      color: rgb(255, 255, 255);
+      font-family: "Advent pro", 'Times New Roman', Times, serif;
+      font-size: 5rem;
+      text-align: center;
+      margin: 10px 0;
+  }
+
+  .imagen1 {
+    max-width: 80%; 
+    height: auto; 
+    margin: 10px 0; 
+    border-radius: 10px;
+    border: 10px solid #B7A7A9;
+}
+
+h2{
+  color: rgb(255, 255, 255);
+  font-family: "Advent pro", 'Times New Roman', Times, serif;
+  font-size: 3rem;
+  text-align: center;
+  margin: 10px 0;
+}
+
+.center-text{
+  color: #e1e1e1;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: 1rem;
+  text-align: center;
+  margin: 0;
+}
+
+.imagen2 {
+  border-radius: 50%;
+  border: 7px solid #B7A7A9; 
+  width: 300px;
+  height: auto;
+}
+
+
+h5{
+  color: rgb(255, 255, 255);
+  font-family: "Advent pro", 'Times New Roman', Times, serif;
+  font-size: 1.1rem;
+  text-align: left;
+  margin: 10px 0;
+}
+
+h4{
+  color: rgb(255, 255, 255);
+  font-family: "Advent pro", 'Times New Roman', Times, serif;
+  font-size: 2.6rem;
+  text-align: center;
+  margin: 10px 0;
+}
+.imagen3 {
+  border: 10px solid #91766E; 
+  width: 150px;
+  height: auto;
+  display: block;
+  border-radius: 7px;
+}
+
+
+
+h3{
+  color: rgb(255, 255, 255);
+  font-family: "Advent pro", 'Times New Roman', Times, serif;
+  font-size: 1rem;
+  text-align: left;
+  margin: 10px 0;
+}
+
+.container3 {
+  display: flex;
+  justify-content: space-between; 
+  align-items: center; 
+  height: 100vh;
+  padding: 20px;
+  flex-wrap: wrap;
+  align-content: stretch;
+  justify-content: space-between;
+  flex-direction: column;
+}
+
+.container2 {
+  display: flex;
+  justify-content: space-between; 
+  align-items: center; 
+  height: 100vh;
+  padding: 20px; 
+  flex-direction: column;
+}
+
+  }
+
+
+
+
+
+/* Icono de menú (tres rayitas) */
+.menu-icon {
+  display: none; /* Oculto por defecto */
+  font-size: 24px;
+  cursor: pointer;
+  padding: 10px;
+  background-color: #1b1c1e;
+  color: white;
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  z-index: 1000;
+  border-radius: 5px;
+}
+
+/* Sidebar (menú lateral) */
+.sidebar {
+  display: block; /* Siempre visible en ordenadores */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 200px;
+  height: 100%;
+  background-color: none; /* Color sólido más elegante */
+  padding-top: 50px;
+  z-index: 999;
+}
+
+/* Botones del menú */
+.sidebar button {
+  display: block;
+  width: 100%;
+  margin: 10px 0;
+  padding: 12px;
+  border: none;
+  background: none; /* Color sólido y agradable */
+  color: white;
+  text-align: left;
+  font-size: 18px;
+  cursor: pointer;
+  border-radius: 4px; /* Bordes redondeados */
+  transition: background 0.3s ease; /* Efecto suave al pasar el ratón */
+}
+
+.sidebar button:hover {
+  background: none; /* Color de hover más atractivo */
+  text-decoration: underline;
+}
+
+/* Versión responsive: en móviles (max-width: 768px) */
+@media (max-width: 768px) {
+  .menu-icon {
+      display: block; /* Muestra el icono de tres rayitas */
+  }
+  .sidebar {
+      display: none; /* Oculta el sidebar por defecto en móviles */
+  }
+}
+
+/* Versión para pantallas grandes (min-width: 769px) */
+@media (min-width: 769px) {
+  .menu-icon {
+      display: none; /* Oculta el icono de tres rayitas */
+  }
+  .sidebar {
+      display: block; /* Muestra siempre el menú en pantallas grandes */
+  }
+}
