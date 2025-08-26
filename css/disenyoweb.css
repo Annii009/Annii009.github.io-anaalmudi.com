@@ -365,7 +365,7 @@ body {
         min-width: auto;
     }
 
-    
+
     .image-section:first-child,
     .image-section:nth-child(3) {
         transform: scale(1);
