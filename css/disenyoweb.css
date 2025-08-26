@@ -360,12 +360,12 @@ body {
     }
 
     .images-container {
-        flex-direction: column;
+        flex-direction: row;
         gap: 30px;
         min-width: auto;
     }
 
-    /* En móvil, eliminamos las rotaciones */
+    
     .image-section:first-child,
     .image-section:nth-child(3) {
         transform: scale(1);
@@ -380,7 +380,7 @@ body {
     }
 
     .image-section img {
-        height: 200px;
+        height: 150px;
     }
 
     .link-section {
