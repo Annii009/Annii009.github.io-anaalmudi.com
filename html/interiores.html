@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <style type="text/css"></style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/interiores.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <title>Ana Almudi</title>
+    <script type="text/javascript" src="../js/index.js"></script>
+    <link rel="shortcut icon" href="../imagenes/icons/logo.png">
+    <link rel="favicon" href="../imagenes/icons/logo.png">
+    <link rel="icon" href="../imagenes/icons/logo.png">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header class="header">
+        <div class="logo-container">
+            <a href="../html/index.html">
+            <img src="../imagenes/icons/logo.png" alt="Logo" class="logo">
+            </a>
+        </div>
+
+        <nav class="nav-buttons">
+            <a href="../html/index.html" class="nav-btn active" onclick="setActive(this, 'desktop')">Principal</a>
+            <a href="../html/dibujos.html" class="nav-btn" onclick="setActive(this, 'desktop')">Dibujos</a>
+            <a href="../html/sobremi.html" class="nav-btn" onclick="setActive(this, 'desktop')">Sobre mí</a>
+            <a href="../html/disenyoweb.html" class="nav-btn" onclick="setActive(this, 'desktop')">Diseño Web</a>
+            <a href="../html/interiores.html" class="nav-btn" onclick="setActive(this, 'desktop')">Interiores</a>
+        </nav>
+
+        <div class="hamburger" onclick="toggleMenu()" aria-label="Abrir menú">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+
+        <div class="mobile-menu" id="mobileMenu">
+            <a href="../html/index.html" class="mobile-nav-btn active" onclick="setActive(this, 'mobile')">Principal</a>
+            <a href="../html/dibujos.html" class="mobile-nav-btn" onclick="setActive(this, 'mobile')">Dibujos</a>
+            <a href="../html/sobremi.html" class="mobile-nav-btn" onclick="setActive(this, 'mobile')">Sobre mí</a>
+            <a href="../html/disenyoweb.html" class="mobile-nav-btn" onclick="setActive(this, 'mobile')">Diseño Web</a>
+            <a href="../html/interiores.html" class="mobile-nav-btn" onclick="setActive(this, 'mobile')">Interiores</a>
+        </div>
+
+        <div class="overlay" id="overlay" onclick="closeMenu()"></div>
+    </header>
+
+
+    <div class="container">
+        <div class="left-section">
+            <div class="image-container">
+                <img src="../imagenes/icons/flecha11.png" alt="Detalle de diseño" class="small-image">
+                <img src="../imagenes/interiores/comedorVerde.JPG" alt="Sala de estar moderna" class="main-image">              
+            </div>
+            
+            <h1 class="title">
+                <span class="design">DISEÑO DE</span> <span class="interiores">INTERIORES</span>
+            </h1>
+            
+            <p class="description">
+                Soy especialista en visualización arquitectónica y diseño de interiores, creando renders hiperrealistas mediante Autodesk 3ds Max y V-Ray. Mi trabajo consiste en transformar conceptos y planos en imágenes impactantes que capturen la esencia de un espacio, permitiendo visualizar materiales, iluminación y composición con un nivel de detalle fotorealista.
+            </p>
+        </div>
+        
+        <div class="right-section">
+            <div class="image-row row-1">
+                <img src="../imagenes/interiores/comedorzaragoza.JPG" alt="Cocina moderna" class="image-large">
+                <img src="../imagenes/interiores/comedorManos.JPG" alt="Dormitorio acogedor" class="image-small">
+            </div>
+            
+            <div class="image-row row-2">
+                <img src="../imagenes/interiores/comedorluz.JPG" alt="Baño de lujo" class="image-small">
+                <img src="../imagenes/interiores/cocheazul.JPG" alt="Sala de estar minimalista" class="image-large">
+            </div>
+            
+            <div class="image-row row-3">
+                <img src="../imagenes/interiores/comedorColumpio.JPG" alt="Oficina moderna" class="image-large">
+                <img src="../imagenes/interiores/escritorio.JPG" alt="Comedor elegante" class="image-small">
+            </div>
+            
+            <div class="image-row row-4">
+                <img src="../imagenes/interiores/comedorColor.JPG" alt="Terraza exterior" class="image-small">
+                <img src="../imagenes/interiores/detallescomedor.JPG" alt="Sala de estudio" class="image-large">
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="social-button">
+            <div class="social-icons">
+                <a href="https://www.linkedin.com/" target="_blank" class="social-icon">
+                    <img src="../imagenes/icons/linkedin (1).png" alt="LinkedIn" class="social-img">
+                </a>
+                <a href="https://www.instagram.com/" target="_blank" class="social-icon">
+                    <img src="../imagenes/icons/instagram (1).png" alt="Instagram" class="social-img">
+                </a>
+                <a href="https://github.com/Annii009" target="_blank" class="social-icon">
+                    <img src="../imagenes/icons/github (1).png" alt="GitHub" class="social-img">
+                </a>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

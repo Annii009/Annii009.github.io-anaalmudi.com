@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <style type="text/css"></style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/sobremi.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <title>Ana Almudi</title>
+    <script type="text/javascript" src="../js/index.js"></script>
+    <link rel="shortcut icon" href="../imagenes/icons/logo.png">
+    <link rel="favicon" href="../imagenes/icons/logo.png">
+    <link rel="icon" href="../imagenes/icons/logo.png">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header class="header">
+        <div class="logo-container">
+            <a href="../html/index.html">
+                <img src="../imagenes/icons/logo.png" alt="Logo" class="logo">
+            </a>
+        </div>
+
+        <nav class="nav-buttons">
+            <a href="../html/index.html" class="nav-btn active" onclick="setActive(this, 'desktop')">Principal</a>
+            <a href="../html/dibujos.html" class="nav-btn" onclick="setActive(this, 'desktop')">Dibujos</a>
+            <a href="../html/sobremi.html" class="nav-btn" onclick="setActive(this, 'desktop')">Sobre mí</a>
+            <a href="../html/disenyoweb.html" class="nav-btn" onclick="setActive(this, 'desktop')">Diseño Web</a>
+            <a href="../html/interiores.html" class="nav-btn" onclick="setActive(this, 'desktop')">Interiores</a>
+        </nav>
+
+        <div class="hamburger" onclick="toggleMenu()" aria-label="Abrir menú">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+
+        <div class="mobile-menu" id="mobileMenu">
+            <a href="../html/index.html" class="mobile-nav-btn active" onclick="setActive(this, 'mobile')">Principal</a>
+            <a href="../html/dibujos.html" class="mobile-nav-btn" onclick="setActive(this, 'mobile')">Dibujos</a>
+            <a href="../html/sobremi.html" class="mobile-nav-btn" onclick="setActive(this, 'mobile')">Sobre mí</a>
+            <a href="../html/disenyoweb.html" class="mobile-nav-btn" onclick="setActive(this, 'mobile')">Diseño Web</a>
+            <a href="../html/interiores.html" class="mobile-nav-btn" onclick="setActive(this, 'mobile')">Interiores</a>
+        </div>
+
+        <div class="overlay" id="overlay" onclick="closeMenu()"></div>
+    </header>
+    <div class="container">
+
+        <div class="header-section">
+            <img src="../imagenes/icons/flecha6.png" alt="Imagen de perfil" class="header-image">
+            <h1 class="main-title">SOBRE MI</h1>
+        </div>
+
+
+        <div class="content-section">
+            <div class="image-container">
+                <img src="../imagenes/icons/mee.jpg" alt="Imagen con marco" class="framed-image">
+            </div>
+
+            <div class="text-content">
+                <p>
+                    Soy Ana Hernández Almudí, programadora apasionada por el frontend y creativa de corazón.
+                    Combino mi experiencia como diseñadora de interiores y artista con el mundo del desarrollo web,
+                    creando espacios digitales con el mismo cuidado y detalle que aplico a los físicos.
+                    Esta web es mi rincón personal para compartir mis proyectos, desde los primeros hasta los que están
+                    por venir, uniendo código, diseño y arte en cada creación.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="container2">
+        <div class="header2">
+            <img src="../imagenes/icons/flecha5.png" alt="Imagen izquierda" class="header-image2">
+            <h1>QUÉ HAGO<br>QUÉ USO</h1>
+            <img src="../imagenes/icons/flecha4.png" alt="Imagen derecha" class="header-image2">
+        </div>
+
+        <div class="main-content">
+            <div class="services-column">
+                <ul class="services-list">
+                    <li>Diseño web</li>
+                    <li>Programación web</li>
+                    <li>Desarrollo de apps</li>
+                    <li>Diseño de espacios de interior</li>
+                    <li>Renders</li>
+                    <li>Dibujos a papel y digitales</li>
+                </ul>
+            </div>
+
+            <div class="tools-column">
+                <div class="tools-grid">
+                    <div class="tool-item">
+                        <img src="../imagenes/icons/3dsmax.png" alt="Herramienta 1">
+                    </div>
+                    <div class="tool-item">
+                        <img src="../imagenes/icons/Figma.png" alt="Herramienta 2">
+                    </div>
+                    <div class="tool-item">
+                        <img src="../imagenes/icons/java.png" alt="Herramienta 3">
+                    </div>
+                    <div class="tool-item">
+                        <img src="../imagenes/icons/HTML-CSS-Review.png" alt="Herramienta 4">
+                    </div>
+                    <div class="tool-item">
+                        <img src="../imagenes/icons/js.png" alt="Herramienta 5">
+                    </div>
+                    <div class="tool-item">
+                        <img src="../imagenes/icons/v-ray-3dsmax-logo.png" alt="Herramienta 6">
+                    </div>
+                    <div class="tool-item">
+                        <img src="../imagenes/icons/procreatepng.png" alt="Herramienta 7">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+<footer>
+    <div class="social-button">
+        <div class="social-icons">
+            <a href="https://www.linkedin.com/" target="_blank" class="social-icon">
+                <img src="../imagenes/icons/linkedin (1).png" alt="LinkedIn" class="social-img">
+            </a>
+            <a href="https://www.instagram.com/" target="_blank" class="social-icon">
+                <img src="../imagenes/icons/instagram (1).png" alt="Instagram" class="social-img">
+            </a>
+            <a href="https://github.com/Annii009" target="_blank" class="social-icon">
+                <img src="../imagenes/icons/github (1).png" alt="GitHub" class="social-img">
+            </a>
+        </div>
+    </div>
+</footer>
+
+</html>

@@ -1,0 +1,159 @@
+body {
+    background: #1b1b1b;
+    margin: 0;
+    padding: 20px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.container {
+    display: flex;
+    gap: 20px;
+}
+
+.left-section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.image-container {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 10px;
+}
+
+.main-image {
+    width: 60%;
+    height: auto;
+    border-radius: 50% 50% 0 0;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.small-image {
+    width: 30%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20%;
+}
+
+.title {
+    font-family: 'Bodoni FLF', serif;
+    font-size: 4.7em;
+    text-align: center;
+}
+
+.title .design {
+    color: white;
+}
+
+.title .interiores {
+    color: #7794a2;
+}
+
+.description {
+    font-family: 'Lato', sans-serif;
+    font-size: 1.3em;
+    line-height: 1.8;
+    color: white;
+    text-align: center;
+    max-width: 40ch;
+    margin: 0 auto;
+}
+
+.right-section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.image-row {
+    display: flex;
+    gap: 15px;
+    height: 400px;
+}
+
+.image-large {
+    flex: 2;
+    border-radius: 12px;
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+}
+
+.image-small {
+    flex: 1; 
+    border-radius: 12px;
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+}
+
+
+@media (max-width: 1024px) {
+    .title {
+        font-size: em;
+    }
+
+    .image-row {
+        height: 300px;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        gap: 40px;
+    }
+
+    .title {
+        font-size: 4em;
+    }
+
+    .description {
+        font-size: 1.1em;
+        max-width: 32ch;
+    }
+
+    .image-row {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .image-large,
+    .image-small {
+        flex: unset;
+        width: 100%;
+        height: auto;
+    }
+
+    .small-image {
+        margin-top: 10%; 
+    }
+}
+
+@media (max-width: 480px) {
+    .title {
+        font-size: 3em;
+    }
+
+    .description {
+        font-size: 1em;
+        line-height: 1.6;
+        max-width: 28ch;
+    }
+
+    .container {
+        padding: 10px;
+    }
+}

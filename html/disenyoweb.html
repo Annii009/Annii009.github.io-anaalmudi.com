@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <style type="text/css"></style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/disenyoweb.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <title>Ana Almudi</title>
+    <script type="text/javascript" src="../js/index.js"></script>
+    <link rel="shortcut icon" href="../imagenes/icons/logo.png">
+    <link rel="favicon" href="../imagenes/icons/logo.png">
+    <link rel="icon" href="../imagenes/icons/logo.png">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header class="header">
+        <div class="logo-container">
+            <a href="../html/index.html">
+                <img src="../imagenes/icons/logo.png" alt="Logo" class="logo">
+            </a>
+        </div>
+
+        <nav class="nav-buttons">
+            <a href="../html/index.html" class="nav-btn active" onclick="setActive(this, 'desktop')">Principal</a>
+            <a href="../html/dibujos.html" class="nav-btn" onclick="setActive(this, 'desktop')">Dibujos</a>
+            <a href="../html/sobremi.html" class="nav-btn" onclick="setActive(this, 'desktop')">Sobre mí</a>
+            <a href="../html/disenyoweb.html" class="nav-btn" onclick="setActive(this, 'desktop')">Diseño Web</a>
+            <a href="../html/interiores.html" class="nav-btn" onclick="setActive(this, 'desktop')">Interiores</a>
+        </nav>
+
+        <div class="hamburger" onclick="toggleMenu()" aria-label="Abrir menú">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+
+        <div class="mobile-menu" id="mobileMenu">
+            <a href="../html/index.html" class="mobile-nav-btn active" onclick="setActive(this, 'mobile')">Principal</a>
+            <a href="../html/dibujos.html" class="mobile-nav-btn" onclick="setActive(this, 'mobile')">Dibujos</a>
+            <a href="../html/sobremi.html" class="mobile-nav-btn" onclick="setActive(this, 'mobile')">Sobre mí</a>
+            <a href="../html/disenyoweb.html" class="mobile-nav-btn" onclick="setActive(this, 'mobile')">Diseño Web</a>
+            <a href="../html/interiores.html" class="mobile-nav-btn" onclick="setActive(this, 'mobile')">Interiores</a>
+        </div>
+
+        <div class="overlay" id="overlay" onclick="closeMenu()"></div>
+    </header>
+
+
+    <h1 class="main-title">DISEÑO WEB</h1>
+
+    <div class="phones-container">
+        <div class="phone">
+            <div class="volume-button"></div>
+            <div class="phone-screen">
+                <div class="notch"></div>
+                <div class="screen-content">
+                    <img src="../imagenes/web/web1.png" alt="Imagen 1">
+                </div>
+            </div>
+        </div>
+
+        <div class="phone">
+            <div class="volume-button"></div>
+            <div class="phone-screen">
+                <div class="notch"></div>
+                <div class="screen-content">
+                    <img src="../imagenes/web/web2.png" alt="Imagen 2">
+                </div>
+            </div>
+        </div>
+
+        <div class="phone">
+            <div class="volume-button"></div>
+            <div class="phone-screen">
+                <div class="notch"></div>
+                <div class="screen-content">
+                    <img src="../imagenes/web/web3.png" alt="Imagen 3">
+                </div>
+            </div>
+        </div>
+
+        <div class="phone">
+            <div class="volume-button"></div>
+            <div class="phone-screen">
+                <div class="notch"></div>
+                <div class="screen-content">
+                    <img src="../imagenes/web/web4.png" alt="Imagen 4">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="content-container">
+        <div class="images-container">
+            <div class="image-section">
+                <img src="../imagenes/icons/flecha4.png" alt="Imagen de ejemplo">
+            </div>
+            <div class="image-section">
+                <img src="../imagenes/icons/flecha3.png" alt="Imagen de ejemplo">
+            </div>
+            <div class="image-section">
+                <img src="../imagenes/icons/flecha6.png" alt="Imagen de ejemplo">
+            </div>
+        </div>
+
+        <div class="link-section">
+            <a href="https://lauramariapsicologa.com/" class="link-button">
+                Link de la página web
+            </a>
+        </div>
+    </div>
+
+</body>
+
+<footer>
+    <div class="social-button">
+        <div class="social-icons">
+            <a href="https://www.linkedin.com/" target="_blank" class="social-icon">
+                <img src="../imagenes/icons/linkedin (1).png" alt="LinkedIn" class="social-img">
+            </a>
+            <a href="https://www.instagram.com/" target="_blank" class="social-icon">
+                <img src="../imagenes/icons/instagram (1).png" alt="Instagram" class="social-img">
+            </a>
+            <a href="https://github.com/Annii009" target="_blank" class="social-icon">
+                <img src="../imagenes/icons/github (1).png" alt="GitHub" class="social-img">
+            </a>
+        </div>
+    </div>
+</footer>
+
+</html>
