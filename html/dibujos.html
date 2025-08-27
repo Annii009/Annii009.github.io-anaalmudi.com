@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="../css/style.css">
     <title>Ana Almudi</title>
     <script type="text/javascript" src="../js/index.js"></script>
+    <script type="text/javascript" src="../js/detalle.js"></script>
     <link rel="shortcut icon" href="../imagenes/icons/logo.png">
     <link rel="favicon" href="../imagenes/icons/logo.png">
     <link rel="icon" href="../imagenes/icons/logo.png">
@@ -16,14 +17,118 @@
 </head>
 
 <body>
-<div class="container">
-        <div class="spinner"></div>
-        
-        <h1>Estamos Trabajando en Ello</h1>
-        
-        <p class="subtitle">
-            Nuestro sitio web está siendo actualizado. Volveremos pronto con mejoras.
-        </p>
+    <header class="header">
+        <div class="logo-container">
+            <a href="../html/index.html">
+                <img src="../imagenes/icons/logo.png" alt="Logo" class="logo">
+            </a>
+        </div>
+
+        <nav class="nav-buttons">
+            <a href="../html/index.html" class="nav-btn active" onclick="setActive(this, 'desktop')">Principal</a>
+            <a href="../html/dibujos.html" class="nav-btn" onclick="setActive(this, 'desktop')">Dibujos</a>
+            <a href="../html/sobremi.html" class="nav-btn" onclick="setActive(this, 'desktop')">Sobre mí</a>
+            <a href="../html/disenyoweb.html" class="nav-btn" onclick="setActive(this, 'desktop')">Diseño Web</a>
+            <a href="../html/interiores.html" class="nav-btn" onclick="setActive(this, 'desktop')">Interiores</a>
+        </nav>
+
+        <div class="hamburger" onclick="toggleMenu()" aria-label="Abrir menú">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+
+        <div class="mobile-menu" id="mobileMenu">
+            <a href="../html/index.html" class="mobile-nav-btn active" onclick="setActive(this, 'mobile')">Principal</a>
+            <a href="../html/dibujos.html" class="mobile-nav-btn" onclick="setActive(this, 'mobile')">Dibujos</a>
+            <a href="../html/sobremi.html" class="mobile-nav-btn" onclick="setActive(this, 'mobile')">Sobre mí</a>
+            <a href="../html/disenyoweb.html" class="mobile-nav-btn" onclick="setActive(this, 'mobile')">Diseño Web</a>
+            <a href="../html/interiores.html" class="mobile-nav-btn" onclick="setActive(this, 'mobile')">Interiores</a>
+        </div>
+
+        <div class="overlay" id="overlay" onclick="closeMenu()"></div>
+    </header>
+
+    <div class="galeria-container">
+        <div class="fila">
+            <img src="../imagenes/dibujos/chicamanchas.jpg" alt="Imagen 1">
+            <img src="../imagenes/dibujos/rosacolor.jpg" alt="Imagen 2">
+            <img src="../imagenes/dibujos/chicagorro.JPG" alt="Imagen 3">
+            <img src="../imagenes/dibujos/febrero.JPG" alt="Imagen 4">
+        </div>
+        <div class="fila">
+            <img src="../imagenes/dibujos/marzo.JPG" alt="Imagen 5">
+            <img src="../imagenes/dibujos/sanvalentin.JPG" alt="Imagen 6">
+            <img src="../imagenes/dibujos/planta.jpg" alt="Imagen 7">
+            <img src="../imagenes/dibujos/chicaflores.JPG" alt="Imagen 8">
+        </div>
     </div>
+
+    <!-- Modal -->
+    <div id="modal" class="modal">
+        <span class="close">&times;</span>
+        <span class="arrow left">&#10094;</span>
+        <img class="modal-content" id="modal-img">
+        <span class="arrow right">&#10095;</span>
+    </div>
+
+
+    <div class="container">
+        <!-- Fila: texto izquierda / título derecha -->
+        <div class="intro-row">
+            <div class="intro-text">
+                <p>
+                    Me encanta crear ilustraciones digitales y una de mis herramientas favoritas es Procreate. Con esta
+                    app
+                    he desarrollado un estilo propio que combina detalles cuidados, colores vivos y un toque creativo en
+                    cada trazo.
+                    Trabajo tanto en dibujos artísticos como en ilustraciones más modernas y personalizadas, adaptándome
+                    a
+                    diferentes estilos y necesidades. Desde bocetos rápidos hasta piezas más elaboradas, cada proyecto
+                    lo
+                    realizo con dedicación y buscando siempre transmitir algo único.
+                    Procreate me permite jugar con pinceles, texturas y efectos, lo que hace que cada ilustración tenga
+                    su
+                    propia personalidad.
+                </p>
+            </div>
+
+            <div class="intro-title">
+                <h2>
+                    <span class="design">DIBUJOS EN </span> <span class="procreate">PROCREATE</span>
+                </h2>
+            </div>
+        </div>
+
+        <!-- Fila de imágenes (sin cambios) -->
+        <div class="images-row">
+            <img src="../imagenes/dibujos/rosa.jpeg" alt="Imagen horizontal" class="horizontal">
+            <div class="vertical-images">
+                <img src="../imagenes/dibujos/mano.JPG" alt="Imagen vertical 1">
+                <img src="../imagenes/dibujos/manos.JPG" alt="Imagen vertical 2">
+            </div>
+        </div>
+    </div>
+
+
+
 </body>
+
+<footer>
+    <div class="social-button">
+        <div class="social-icons">
+            <a href="https://www.linkedin.com/" target="_blank" class="social-icon">
+                <img src="../imagenes/icons/linkedin (1).png" alt="LinkedIn" class="social-img">
+            </a>
+            <a href="https://www.instagram.com/" target="_blank" class="social-icon">
+                <img src="../imagenes/icons/instagram (1).png" alt="Instagram" class="social-img">
+            </a>
+            <a href="https://github.com/Annii009" target="_blank" class="social-icon">
+                <img src="../imagenes/icons/github (1).png" alt="GitHub" class="social-img">
+            </a>
+        </div>
+    </div>
+</footer>
+
 </html>

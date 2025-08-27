@@ -213,6 +213,31 @@ body {
     }
 }
 
+
+.texto-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    font-family: 'Lato', sans-serif;
+    font-size: 1.2rem;
+    line-height: 1.8;
+    color: #f2f1eb;
+}
+
+.texto-container p {
+    margin-bottom: 20px;
+}
+
+.texto-container strong {
+    color: #7794a2;
+}
+
+.texto-container em {
+    color: #c2d0e1;
+    font-style: normal;
+}
+
+
 .content-container {
     display: flex;
     flex-direction: column;
@@ -228,7 +253,6 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 50px;
     perspective: 1000px;
     flex: 1;
     min-width: 600px;
@@ -302,13 +326,15 @@ body {
     font-size: 2rem;
     transition: all 0.3s ease;
     min-width: 250px;
-    box-shadow: 10px 10px #000;
+    box-shadow: 10px 10px #5f7884;
     margin: 10px 0;
 }
 
 .link-button:hover {
     transform: translateY(-3px);
-    background: #c2d0e1;
+    background: #7794a2;
+    color: white;
+    box-shadow: 10px 10px #5f7884;
 }
 
 .link-button:active {
