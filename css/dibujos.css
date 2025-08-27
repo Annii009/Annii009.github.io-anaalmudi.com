@@ -87,7 +87,6 @@ body {
     color: #7794a2;
 }
 
-
 /* Contenedor general */
 .container {
     padding: 10px;
@@ -100,7 +99,6 @@ body {
 .intro-row {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    /* mitad y mitad */
     align-items: flex-start;
     column-gap: 20px;
 }
@@ -118,15 +116,14 @@ body {
     font-family: 'Lato', sans-serif;
     max-width: 70ch;
 }
+
 .intro-title {
     grid-column: 2;
     display: flex;
     justify-content: flex-end;
-    /* pega el h2 a la derecha */
     align-items: flex-start;
     text-align: right;
 }
-
 
 .intro-title h2 {
     font-family: 'Bodoni FLF', serif;
@@ -172,30 +169,62 @@ body {
 }
 
 /* Responsive */
-@media (max-width:900px) {
+@media (max-width: 900px) {
+    /* Título arriba, texto abajo */
     .intro-row {
         grid-template-columns: 1fr;
-        /* apilar */
-        row-gap: 10px;
+        row-gap: 20px;
     }
-
+    
     .intro-title {
+        grid-column: 1;
+        order: -1; /* Pone el título primero */
         justify-content: center;
         text-align: center;
     }
-
-    .intro-title h2 {
-        font-size: 1.5rem;
+    
+    .intro-text {
+        grid-column: 1;
+        order: 1; /* Pone el texto después */
+    }
+    
+    .intro-text p {
+        text-align: center;
+        margin: 0 auto;
     }
 
-    /* Fotos (igual que tenías en móvil) */
+    .intro-title h2 {
+        font-size: 3rem;
+        text-align: center;
+        margin: 0;
+    }
+
     .images-row {
         grid-template-columns: 1fr;
         height: auto;
     }
 
+    .horizontal {
+        max-width: 100%;  
+        height: auto;
+        margin: 0 auto;
+    }
+
     .vertical-images {
         grid-template-columns: 1fr;
         margin-top: 10px;
+    }
+
+    .vertical-images img {
+        max-width: 80%;
+        height: auto;
+        margin: 0 auto;
+    }
+
+    /* Galería fila: imágenes más chicas y apiladas */
+    .fila img {
+        max-width: 180px; 
+        width: 100%;
+        margin: 0 auto;
     }
 }
