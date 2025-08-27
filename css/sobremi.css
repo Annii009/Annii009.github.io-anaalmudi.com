@@ -9,7 +9,7 @@
 
 body {
     min-height: 100vh;
-    background: linear-gradient(to top, #7794a2, #1b1b1b);
+    background: #1b1b1b;
     padding: 40px 20px;
 }
 
@@ -87,7 +87,6 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 60px 20px 40px;
     color: white;
     position: relative;
     gap: 30px;
@@ -110,7 +109,6 @@ h1 {
 
 .main-content {
     display: flex;
-    padding: 60px 40px;
     gap: 60px;
     align-items: flex-start;
 }
@@ -121,7 +119,7 @@ h1 {
 
 .services-list {
     list-style: disc;
-    padding-left: 0;
+    padding-left: 60px;
 }
 
 .services-list li {
