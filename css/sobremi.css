@@ -59,6 +59,7 @@ body {
     width: 300px;
     height: 400px;
     object-fit: cover;
+    border-radius: 8px;
     border: 15px solid white;
     border-bottom: 25px solid white;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
@@ -143,7 +144,7 @@ h1 {
     height: 400px;
     background: #c2d0e1;
     padding: 20px;
-    border-radius: 15px;
+    border-radius: 8px;
 }
 
 .tool-item {
@@ -314,8 +315,8 @@ h1 {
     .framed-image {
         width: 250px;
         height: 320px;
-        border: 12px solid white;
-        border-bottom: 20px solid white;
+        border: 8px solid white;
+        border-bottom: 8px solid white;
     }
 
     .text-content p {
