@@ -484,13 +484,3 @@ body {
     }
 }
 
-
-@media (prefers-reduced-motion: reduce) {
-    .flip-card-inner {
-        transition: none;
-    }
-    
-    .flip-card {
-        transition: none;
-    }
-}
