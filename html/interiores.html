@@ -14,21 +14,21 @@
     <link rel="icon" href="../imagenes/icons/logo.png">
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
     <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-0NNDM198YW"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-0NNDM198YW"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
 
-  gtag('config', 'G-0NNDM198YW');
-</script>
+        gtag('config', 'G-0NNDM198YW');
+    </script>
 </head>
 
 <body>
     <header class="header">
         <div class="logo-container">
             <a href="../html/index.html">
-            <img src="../imagenes/icons/logo.png" alt="Logo" class="logo">
+                <img src="../imagenes/icons/logo.png" alt="Logo" class="logo">
             </a>
         </div>
 
@@ -37,7 +37,7 @@
             <a href="../html/dibujos.html" class="nav-btn" onclick="setActive(this, 'desktop')">Dibujos</a>
             <a href="../html/sobremi.html" class="nav-btn" onclick="setActive(this, 'desktop')">Sobre mí</a>
             <a href="../html/disenyoweb.html" class="nav-btn" onclick="setActive(this, 'desktop')">Diseño Web</a>
-            <a href="../html/interiores.html" class="nav-btn" onclick="setActive(this, 'desktop')">Interiores</a>
+            <a href="../html/interiores.html" class="nav-btn" onclick="setActive(this, 'desktop')">Interiorismo</a>
         </nav>
 
         <div class="hamburger" onclick="toggleMenu()" aria-label="Abrir menú">
@@ -63,39 +63,160 @@
         <div class="left-section">
             <div class="image-container">
                 <img src="../imagenes/icons/flecha11.png" alt="Detalle de diseño" class="small-image">
-                <img src="../imagenes/interiores/comedorVerde.JPG" alt="Sala de estar moderna" class="main-image">              
+                <img src="../imagenes/interiores/comedorVerde.JPG" alt="Sala de estar moderna" class="main-image">
             </div>
-            
+
             <h1 class="title">
                 <span class="design">DISEÑO DE</span> <span class="interiores">INTERIORES</span>
             </h1>
-            
+
             <p class="description">
-                Soy especialista en visualización arquitectónica y diseño de interiores, creando renders hiperrealistas mediante Autodesk 3ds Max y V-Ray. Mi trabajo consiste en transformar conceptos y planos en imágenes impactantes que capturen la esencia de un espacio, permitiendo visualizar materiales, iluminación y composición con un nivel de detalle fotorealista.
+                Soy especialista en visualización arquitectónica y diseño de interiores, creando renders hiperrealistas
+                mediante Autodesk 3ds Max y V-Ray. Mi trabajo consiste en transformar conceptos y planos en imágenes
+                impactantes que capturen la esencia de un espacio, permitiendo visualizar materiales, iluminación y
+                composición con un nivel de detalle fotorealista.
             </p>
         </div>
-        
+
         <div class="right-section">
             <div class="image-row row-1">
-                <img src="../imagenes/interiores/comedorzaragoza.JPG" alt="Cocina moderna" class="image-large">
-                <img src="../imagenes/interiores/comedorManos.JPG" alt="Dormitorio acogedor" class="image-small">
+                <div class="flip-card image-large">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <img src="../imagenes/interiores/comedorzaragoza.JPG" alt="Cocina moderna">
+                        </div>
+                        <div class="flip-card-back">
+                            <p>Render de un salón de colores neutros con cuadro realizado por mi por encargo.
+                                El cuadro trata de la localización en la que se encuentra el estadio, actualmente,
+                                en obras del Estado la Romareda en Zaragoza. Donde también aparecen las coordenadas.
+                                Quise darle un toque personal al render con este cuadro. Y también una forma bonita
+                                de representar formas donde puedes poner este cuadro.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flip-card image-small">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <img src="../imagenes/interiores/detallescomedor.JPG" alt="Sala de estudio">
+                        </div>
+                        <div class="flip-card-back">
+                            <p>Al igual que la visualización 3D anterior es la misma zona de comedor
+                                pero con un punto de vista diferente. En este caso se puede apreciar
+                                mejor los detalles del comedor, como la textura de la pared, el diseño
+                                de las sillas y la mesa, y los elementos decorativos que aportan un toque
+                                acogedor al espacio.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+
             </div>
-            
+
             <div class="image-row row-2">
-                <img src="../imagenes/interiores/comedorluz.JPG" alt="Baño de lujo" class="image-small">
-                <img src="../imagenes/interiores/cuadrovangogh.JPG" alt="Sala de estar minimalista" class="image-large">
+                <div class="flip-card image-small">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <img src="../imagenes/interiores/comedorluz.JPG" alt="Baño de lujo">
+                        </div>
+                        <div class="flip-card-back">
+                            <p>Imagen 3D de un salón invernal neutro. Se puede destacar la luz del sol
+                                del invierno con nieve que entra por la ventana y da un toque cálido al espacio.
+                                Y los troncos de madera que aportan un toque natural y rústico al ambiente.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flip-card image-large">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <img src="../imagenes/interiores/cuadrovangogh.JPG" alt="Sala de estar">
+                        </div>
+                        <div class="flip-card-back">
+                            <p>Render de una pequeña sala de estar que tiene como toque especial
+                                un cuadro de Van Gogh que aporta un toque artístico y colorido al espacio.
+                                El cuadro es una reproducción de "La noche estrellada" de Van Gogh.
+                                También tiene como toque especial una mesita de centro de cristal con
+                                los bolas de hormigón que aportan un toque moderno y elegante al ambiente,
+                                y dan contraste con el cuadro de Van Gogh.
+                            </p>
+                        </div>
+                    </div>
+                </div>
             </div>
-            
+
             <div class="image-row row-3">
-                <img src="../imagenes/interiores/comedorColumpio.JPG" alt="Oficina moderna" class="image-large">
-                <img src="../imagenes/interiores/escritorio.JPG" alt="Comedor elegante" class="image-small">
+                <div class="flip-card image-large">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <img src="../imagenes/interiores/comedorColumpio.JPG" alt="Oficina moderna">
+                        </div>
+                        <div class="flip-card-back">
+                            <p>Este render refleja un pequeño rincón de una casa convertido en espacio de
+                                lectura y relajación. Destaca el columpio de mimbre que aporta un toque bohemio
+                                y acogedor al ambiente, invitando a disfrutar de momentos de tranquilidad.
+                                La luz natural que entra por la ventana crea un ambiente cálido y sereno,
+                                ideal para desconectar y sumergirse en la lectura. También se puede destacar
+                                el cuadro de las manos, realizado por mí, que hace referencia a una celebración de la
+                                vida y la belleza que florece frente a la adversidad o la violencia, o un acto de
+                                resistencia que protege lo frágil de lo destructivo.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flip-card image-small">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <img src="../imagenes/interiores/escritorio.JPG" alt="Comedor elegante">
+                        </div>
+                        <div class="flip-card-back">
+                            <p>Este espacio de trabajo es genial para un piso muy industrial en que se tengas
+                                que pasar muchas horas sentado trabajando. También esta una de las obras realizadas
+                                por mi de la coleccion de manos, que aporta un toque artístico y personal al ambiente.
+                            </p>
+                        </div>
+                    </div>
+                </div>
             </div>
-            
+
             <div class="image-row row-4">
-                <img src="../imagenes/interiores/comedorColor.JPG" alt="Terraza exterior" class="image-small">
-                <img src="../imagenes/interiores/detallescomedor.JPG" alt="Sala de estudio" class="image-large">
+                <div class="flip-card image-small">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <img src="../imagenes/interiores/comedorColor.JPG" alt="Terraza exterior">
+                        </div>
+                        <div class="flip-card-back">
+                            <p>Render de una zona de descanso de una vivienda en la que se combina algo mas retro
+                                con toques Swinging Sixties. Muchos colores y formas redondeadas que aportan un toque
+                                divertido y alegre al ambiente. También un poco con ese contraste del cuadro que
+                                ya lleva varios colores pero que le dan un toque de color a la pared blanca.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flip-card image-large">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <img src="../imagenes/interiores/comedorManos.JPG" alt="Dormitorio acogedor">
+                        </div>
+                        <div class="flip-card-back">
+                            <p>Imagen renderizada con 3DsMax y V-Ray de un salón con colores neutros en el que
+                                destacan las manos en la pared que aportan un toque artístico y único al espacio.
+                                Las manos estan dibujadas por mi y vienen de un conjunto de obras que hice de
+                                manos y objetos natuales.
+                                También destaca el sofá naranja que aporta un toque de color y frescura al ambiente.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
+
     </div>
 
     <footer>
