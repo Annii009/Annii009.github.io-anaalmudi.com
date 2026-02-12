@@ -80,32 +80,152 @@ body {
     display: flex;
     gap: 15px;
     height: 400px;
+    align-items: center;
+    justify-content: center;
 }
 
-.image-large {
+/* Estilos para tarjetas circulares */
+.tarjeta {
+    position: relative;
+    cursor: pointer;
+    perspective: 1200px;
+    transition: all 0.3s ease;
+}
+
+/* Efecto de levitación */
+.tarjeta:hover {
+    transform: translateY(-10px);
+}
+
+.tarjeta-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s cubic-bezier(0.25, 0.1, 0.25, 1);
+    transform-style: preserve-3d;
+}
+
+.tarjeta:hover .tarjeta-inner {
+    transform: rotateY(180deg);
+}
+
+.tarjeta-front,
+.tarjeta-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+    transition: all 0.5s ease;
+    overflow: hidden;
+}
+
+.tarjeta-front {
+    background: linear-gradient(135deg, #2a2a2a 0%, #1f1f1f 100%);
+    border: 2px solid #7794a2;
+    padding: 0;
+}
+
+.tarjeta-front img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+    transition: all 0.5s ease;
+    display: block;
+}
+
+.tarjeta:hover .tarjeta-front {
+    box-shadow: 0 5px 15px rgba(119, 148, 162, 0.4);
+}
+
+.tarjeta-back {
+    background: linear-gradient(135deg, #7794a2 0%, #5a7a8a 100%);
+    transform: rotateY(180deg);
+    color: white;
+    font-family: 'Lato', sans-serif;
+    padding: 25px;
+    text-align: center;
+    line-height: 1.4;
+}
+
+.tarjeta-back .card-title {
+    font-family: 'Bodoni FLF', serif;
+    font-size: 1.4em;
+    font-weight: 600;
+    letter-spacing: 1px;
+    margin-bottom: 15px;
+    color: #ffffff;
+}
+
+.tarjeta-back .card-text {
+    font-size: 1em;
+    line-height: 1.5;
+    opacity: 0.95;
+}
+
+.tarjeta img {
+    transition: all 0.5s ease;
+}
+
+.tarjeta:hover .tarjeta-front img {
+    transform: scale(1.05);
+}
+
+.tarjeta-front::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    background: linear-gradient(45deg, rgba(119, 148, 162, 0.1) 0%, rgba(255,255,255,0.05) 70%);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.tarjeta:hover .tarjeta-front::after {
+    opacity: 1;
+}
+
+/* Tamaños de tarjetas */
+.tarjeta.large {
     flex: 2;
-    border-radius: 8px;
-    object-fit: cover;
-    height: 100%;
-    width: 100%;
+    height: 400px;
 }
 
-.image-small {
-    flex: 1; 
-    border-radius: 8px;
-    object-fit: cover;
-    height: 100%;
-    width: 100%;
+.tarjeta.small {
+    flex: 1;
+    height: 400px;
 }
-
 
 @media (max-width: 1024px) {
     .title {
-        font-size: em;
+        font-size: 4em;
     }
 
     .image-row {
+        height: auto;
+    }
+    
+    .tarjeta.large,
+    .tarjeta.small {
         height: 300px;
+    }
+    
+    .tarjeta-back .card-text {
+        font-size: 0.9em;
+    }
+    
+    .tarjeta-back .card-title {
+        font-size: 1.2em;
     }
 }
 
@@ -127,17 +247,29 @@ body {
     .image-row {
         flex-direction: column;
         height: auto;
+        gap: 30px;
     }
 
-    .image-large,
-    .image-small {
+    .tarjeta.large,
+    .tarjeta.small {
         flex: unset;
         width: 100%;
-        height: auto;
+        height: 280px;
+        margin: 0 auto;
+        max-width: 350px;
     }
 
     .small-image {
         margin-top: 10%; 
+    }
+    
+    .tarjeta-back .card-text {
+        font-size: 0.85em;
+        padding: 15px;
+    }
+    
+    .tarjeta-back .card-title {
+        font-size: 1.1em;
     }
 }
 
@@ -154,5 +286,21 @@ body {
 
     .container {
         padding: 10px;
+    }
+    
+    .tarjeta.large,
+    .tarjeta.small {
+        height: 250px;
+        max-width: 280px;
+    }
+    
+    .tarjeta-back .card-text {
+        font-size: 0.8em;
+        padding: 12px;
+    }
+    
+    .tarjeta-back .card-title {
+        font-size: 1em;
+        margin-bottom: 10px;
     }
 }
