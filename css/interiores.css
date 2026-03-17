@@ -71,6 +71,8 @@ body {
 }
 
 .right-section {
+    flex: 1.5;
+    min-width: 0;
     display: flex;
     flex-direction: column;
     gap: 20px;
@@ -80,19 +82,17 @@ body {
     display: flex;
     gap: 15px;
     height: 400px;
-    align-items: center;
-    justify-content: center;
+    align-items: stretch;
 }
 
-/* Estilos para tarjetas circulares */
 .tarjeta {
     position: relative;
     cursor: pointer;
     perspective: 1200px;
-    transition: all 0.3s ease;
+    transform-style: preserve-3d;
+    transition: transform 0.3s ease;
 }
 
-/* Efecto de levitación */
 .tarjeta:hover {
     transform: translateY(-10px);
 }
@@ -195,15 +195,12 @@ body {
     opacity: 1;
 }
 
-/* Tamaños de tarjetas */
 .tarjeta.large {
     flex: 2;
-    height: 400px;
 }
 
 .tarjeta.small {
     flex: 1;
-    height: 400px;
 }
 
 @media (max-width: 1024px) {
@@ -213,17 +210,18 @@ body {
 
     .image-row {
         height: auto;
+        align-items: stretch;
     }
-    
+
     .tarjeta.large,
     .tarjeta.small {
         height: 300px;
     }
-    
+
     .tarjeta-back .card-text {
         font-size: 0.9em;
     }
-    
+
     .tarjeta-back .card-title {
         font-size: 1.2em;
     }
@@ -260,14 +258,14 @@ body {
     }
 
     .small-image {
-        margin-top: 10%; 
+        margin-top: 10%;
     }
-    
+
     .tarjeta-back .card-text {
         font-size: 0.85em;
         padding: 15px;
     }
-    
+
     .tarjeta-back .card-title {
         font-size: 1.1em;
     }
@@ -287,18 +285,18 @@ body {
     .container {
         padding: 10px;
     }
-    
+
     .tarjeta.large,
     .tarjeta.small {
         height: 250px;
         max-width: 280px;
     }
-    
+
     .tarjeta-back .card-text {
         font-size: 0.8em;
         padding: 12px;
     }
-    
+
     .tarjeta-back .card-title {
         font-size: 1em;
         margin-bottom: 10px;
