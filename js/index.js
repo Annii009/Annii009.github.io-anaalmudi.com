@@ -1,53 +1,10 @@
-function toggleMenu() {
-            const hamburger = document.querySelector('.hamburger');
-            const mobileMenu = document.getElementById('mobileMenu');
-            const overlay = document.getElementById('overlay');
-            
-            hamburger.classList.toggle('active');
-            mobileMenu.classList.toggle('active');
-            overlay.classList.toggle('active');
-        }
-
-        function closeMenu() {
-            const hamburger = document.querySelector('.hamburger');
-            const mobileMenu = document.getElementById('mobileMenu');
-            const overlay = document.getElementById('overlay');
-            
-            hamburger.classList.remove('active');
-            mobileMenu.classList.remove('active');
-            overlay.classList.remove('active');
-        }
-
-        function setActive(element, type) {
-            if (type === 'desktop') {
-                document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
-                document.querySelectorAll('.mobile-nav-btn').forEach(btn => btn.classList.remove('active'));
-            } else {
-                document.querySelectorAll('.mobile-nav-btn').forEach(btn => btn.classList.remove('active'));
-                document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
-            }
-            
-            element.classList.add('active');
-            const text = element.textContent;
-            
-            if (type === 'desktop') {
-                document.querySelectorAll('.mobile-nav-btn').forEach(btn => {
-                    if (btn.textContent === text) {
-                        btn.classList.add('active');
-                    }
-                });
-            } else {
-                document.querySelectorAll('.nav-btn').forEach(btn => {
-                    if (btn.textContent === text) {
-                        btn.classList.add('active');
-                    }
-                });
-                closeMenu();
-            }
-        }
-
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') {
-                closeMenu();
-            }
-        });
+const btns = document.querySelectorAll('.pill-button');
+btns.forEach(b => {
+    b.addEventListener('mousemove', (e) => {
+        const r = b.getBoundingClientRect();
+        const x = (e.clientX - r.left) / r.width - 0.5;
+        const y = (e.clientY - r.top) / r.height - 0.5;
+        b.style.transform = `translate(${x * 12}px, ${y * 12}px) scale(1.05)`;
+    });
+    b.addEventListener('mouseleave', () => b.style.transform = '');
+});

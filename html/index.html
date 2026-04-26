@@ -2,83 +2,98 @@
 <html lang="es">
 
 <head>
-    <style type="text/css"></style>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/principal.css">
-    <title>Ana Almudi</title>
-    <!--<script type="text/javascript" src="../js/index.js"></script>-->
-    <link rel="shortcut icon" href="../imagenes/icons/logo.png">
-    <link rel="favicon" href="../imagenes/icons/logo.png">
-    <link rel="icon" href="../imagenes/icons/logo.png">
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
-    <script src="https://t.contentsquare.net/uxa/636cd6a08f3d2.js"></script>
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-0NNDM198YW"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-0NNDM198YW');
-</script>
+    <title>Ana Almudí - Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;700&family=Bebas+Neue&family=Meow+Script&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 
-<body>
-    <div class="columns-ana">
-        <div class="left-column">
-            <div class="professional-titles">
-                <h2>DESARROLLADORA WEB</h2>
-                <h3>y diseñadora de interiores</h3>
+<body class="site-body">
+
+    <header class="main-header container">
+        <div class="header-left">
+            <img src="../imagenes/icons/newlogo.png" alt="Logo" class="site-logo">
+        </div>
+        <div class="header-center">
+            <span class="portfolio-label">Portfolio</span>
+        </div>
+        <div class="header-right">
+            <a href="#contacto" class="icon-mail">
+                <i class="fa-regular fa-envelope"></i>
+            </a>
+        </div>
+    </header>
+
+    <main class="main-content container">
+        <section class="hero-layout">
+            <div class="hero-left">
+                <div class="title-box">
+                    <a href="#" class="pill-button btn-diseno">Diseño</a>
+                    <h1 class="main-title">ANA ALMUDÍ</h1>
+                    <p class="subtitle">Desarrolladora Web y diseñadora de interiores</p>
+                    <a href="#" class="pill-button btn-sobremi">Sobre mi</a>
+                </div>
             </div>
 
-            <div class="left-bottom">
-                <h1>
-                    <span class="line">P<span class="port-o">o</span>rt<br/>F<span class="folio-o">o</span>lio</span>
-                </h1>
-                <h2>
-                    Ana Hernández Almudí
-                </h2>
+            <div class="hero-right">
+                <div class="avatar-wrapper">
+                    <a href="#" class="pill-button btn-arte">Arte</a>
+                    <div class="red-circle">
+                        <img src="../imagenes/icons/dibujoIA.png" alt="Ana" class="avatar-img">
+                    </div>
+                    <a href="#" class="pill-button btn-desarrollo">Desarrollo web</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="contacto" class="contact-section">
+            <div class="contact-form-container">
+                <h2 class="section-title">CONTÁCTAME</h2>
+                <p class="contact-text">¿Tienes un proyecto en mente? Ya sea una página web, el rediseño de una
+                    habitación o de tu hogar, un diseño en 3D o un dibujo personalizado, estoy aquí para ayudarte a
+                    hacerlo realidad.<br>Escríbeme en el siguiente apartado y me pondré en contigo a la mayor brevedad
+                    posible.</p>
+
+                <form class="contact-form" action="https://formsubmit.co/anaheralmudi@gmail.com" method="POST">
+
+                    <input type="hidden" name="_captcha" value="false">
+
+                    <input type="hidden" name="_next" value="https://tuweb.com">
+
+                    <div class="form-row">
+                        <input type="text" name="Nombre" placeholder="Nombre" class="input-grey" required>
+                        <input type="email" name="Email" placeholder="Email" class="input-grey" required>
+                    </div>
+                    <textarea name="Mensaje" placeholder="Asunto" class="input-grey" required></textarea>
+
+                    <button type="submit" class="btn-send">Enviar</button>
+                </form>
+            </div>
+
+            <div class="mockup-box">
+                <img src="../imagenes/interiores/imagencorreos.jpg" alt="Mockup" class="mockup-img">
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container footer-grid">
+            <p>Si quieres ver mas novedades de lo que voy haciendo puedes seguirme en mis siguientes redes sociales:</p>
+            <div class="social-icons">
+                <a href="#"><i class="fa-brands fa-github"></i></a>
+                <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+                <a href="#"><i class="fa-brands fa-instagram"></i></a>
             </div>
         </div>
-        <div class="right-column">
-            <div class="image-container">
-                <img src="../imagenes/icons/flecha10.png" alt="Dibujos" class="random-img">
-                <a href="../html/dibujos.html" class="text-element">DIBUJOS</a>
-            </div>
-            <div class="image-container">
-                <img src="../imagenes/icons/flecha8.png" alt="Sobre Mí" class="random-img">
-                <a href="../html/sobremi.html" class="text-element">SOBRE MI</a>
-            </div>
-            <div class="image-container">
-                <img src="../imagenes/icons/flecha7.png" alt="Diseño Web" class="random-img">
-                <a href="../html/disenyoweb.html" class="text-element">DISEÑO WEB</a>
-            </div>
-            <div class="image-container">
-                <img src="../imagenes/icons/flecha9.png" alt="Interiorismo" class="random-img">
-                <a href="../html/interiores.html" class="text-element">INTERIORISMO</a>
-            </div>
-            
-        </div>
+    </footer>
 
-    </div>
-
+    <script src="../js/index.js"></script>
 </body>
-
-<footer>
-    <div class="social-button">
-        <div class="social-icons">
-            <a href="https://www.linkedin.com/in/ana-hernandez-almudi-4877a1242?utm_source=share_via&utm_content=profile&utm_medium=member_ios" target="_blank" class="social-icon">
-                <img src="../imagenes/icons/linkedin.png" alt="LinkedIn" class="social-img">
-            </a>
-            <a href="https://www.instagram.com/ana.almudi/" target="_blank" class="social-icon">
-                <img src="../imagenes/icons/instagram.png" alt="Instagram" class="social-img">
-            </a>
-            <a href="https://github.com/Annii009" target="_blank" class="social-icon">
-                <img src="../imagenes/icons/github.png" alt="GitHub" class="social-img">
-            </a>
-        </div>
-    </div>
-</footer>
 
 </html>
