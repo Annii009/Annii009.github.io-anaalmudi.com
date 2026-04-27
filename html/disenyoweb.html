@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,23 +12,24 @@
     <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;700&family=Bebas+Neue&family=Meow+Script&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="../css/disenyoweb.css">
-    <script src="../js/disenyoweb.js" ></script>
+    <script src="../js/disenyoweb.js" defer></script>
 </head>
+
 <body>
     <header class="main-header container">
         <div class="header-left">
-            <a href="index.html">
+            <a href="../html/index.html">
                 <img src="../imagenes/icons/newlogo.png" alt="Logo" class="site-logo">
             </a>
         </div>
         <nav class="header-nav" id="main-nav">
-            <a href="index.html">Diseño</a>
-            <a href="arte.html">Arte</a>
-            <a href="desarrollo.html" class="active">Desarrollo web</a>
-            <a href="sobremi.html">Sobre mi</a>
+            <a href="../html/interiores.html">Diseño de interiores</a>
+            <a href="../html/dibujos.html">Dibujos</a>
+            <a href="../html/disenyoweb.html" class="active">Desarrollo web</a>
+            <a href="../html/sobremi.html">Sobre mi</a>
         </nav>
         <div class="header-right">
-            <a href="index.html#contacto" class="icon-mail">
+            <a href="../html/index.html#contacto" class="icon-mail">
                 <i class="fa-regular fa-envelope"></i>
             </a>
             <button class="hamburger" id="hamburger" aria-label="Abrir menú">
@@ -44,16 +46,27 @@
             <h1 class="page-title">Proyectos</h1>
         </section>
 
-        <!-- Proyecto 1: Ambustock -->
         <article class="project-section">
             <div class="project-mockup">
-                <img src="../imagenes/proyectos/ambustock-mockup.png" alt="Ambustock mockup">
+                <div class="laptop-mockup-wrapper">
+                    <div class="laptop-screen-area">
+                        <div class="video-wrapper">
+                            <video muted loop playsinline preload="metadata">
+                                <source src="../imagenes/web/ambustock-movil.mp4" media="(max-width: 600px)">
+                                <source src="../imagenes/web/ambustock-pc.mp4">
+                            </video>
+                            <button class="play-btn" aria-label="Reproducir vídeo">
+                                <i class="fa-solid fa-play"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="project-info">
                 <h2 class="project-script-title">Ambustock<br><span>Gestión de ambulancias</span></h2>
                 <p class="project-description">AMBUSTOCK es una aplicación web para la gestión de ambulancias, diseñada para optimizar la coordinación y el seguimiento de los servicios. Con ella se puede gestionar el material que tiene cada ambulancia, crear nuevas ambulancias y gestionar los sanitarios y trabajadores de cada empresa.</p>
                 <div class="project-links">
-                    <a href="#" class="project-link-text">Saber Más ›</a>
+                    <a href="https://github.com/Annii009/AmbuStock.git" class="project-link-text">Saber Más ›</a>
                 </div>
                 <div class="brand-guide">
                     <h4 class="brand-title">Guia de Marca</h4>
@@ -74,17 +87,27 @@
             </div>
         </article>
 
-        <!-- Proyecto 2: Essencia -->
         <article class="project-section reverse">
             <div class="project-mockup">
-                <img src="../imagenes/proyectos/essencia-mockup.png" alt="Essencia mockup">
+                <div class="laptop-mockup-wrapper">
+                    <div class="laptop-screen-area">
+                        <div class="video-wrapper">
+                            <video muted loop playsinline preload="metadata">
+                                <source src="../imagenes/web/essencia-movil.mp4" media="(max-width: 600px)">
+                                <source src="../imagenes/web/essencia-pc.mp4">
+                            </video>
+                            <button class="play-btn" aria-label="Reproducir vídeo">
+                                <i class="fa-solid fa-play"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="project-info">
                 <h2 class="project-script-title">Essencia<br><span>Floristería y cafetería</span></h2>
                 <p class="project-description">ESSENCIA es mi trabajo de fin de grado en Diseño de Interiores, que decidí reutilizar para un pequeño proyecto de clase. La página está dedicada a una cafetería cuya decoración gira en torno a las flores, que también se venden en el propio establecimiento. Además, los clientes pueden realizar compras y encargos a través de la página web.</p>
                 <div class="project-links">
-                    <a href="#" class="project-link-text">Saber Más ›</a>
-                    <a href="#" class="project-link-text">Ver Página ›</a>
+                    <a href="https://github.com/Annii009/Essencia.git" class="project-link-text">Saber Más ›</a>
                 </div>
                 <div class="brand-guide">
                     <h4 class="brand-title">Guia de Marca</h4>
@@ -106,17 +129,27 @@
             </div>
         </article>
 
-        <!-- Proyecto 3: Laura Maria -->
         <article class="project-section">
             <div class="project-mockup">
-                <img src="../imagenes/proyectos/lauramaria-mockup.png" alt="Laura Maria mockup">
+                <div class="laptop-mockup-wrapper">
+                    <div class="laptop-screen-area">
+                        <div class="video-wrapper">
+                            <video muted loop playsinline preload="metadata">
+                                <source src="../imagenes/web/lauramaria-movil.mp4" media="(max-width: 600px)">
+                                <source src="../imagenes/web/lauramaria-pc.mp4">
+                            </video>
+                            <button class="play-btn" aria-label="Reproducir vídeo">
+                                <i class="fa-solid fa-play"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="project-info">
                 <h2 class="project-script-title">Laura Maria Psicóloga</h2>
                 <p class="project-description">Laura Maria psicóloga es una profesional que necesitaba una página web para poder conectar con sus clientes. Realizada en HTML, CSS y JavaScript, con un diseño propio y al estilo de la propia profesional.</p>
                 <div class="project-links">
-                    <a href="#" class="project-link-text">Saber Más ›</a>
-                    <a href="#" class="project-link-text">Ver Página ›</a>
+                    <a href="https://lauramariapsicologa.com/" class="project-link-text">Ver Página ›</a>
                 </div>
                 <div class="brand-guide">
                     <h4 class="brand-title">Guia de Marca</h4>
@@ -151,4 +184,5 @@
         </div>
     </footer>
 </body>
+
 </html>
