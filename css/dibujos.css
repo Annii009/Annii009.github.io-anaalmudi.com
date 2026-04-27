@@ -24,7 +24,6 @@ body {
     margin: 0 auto;
 }
 
-/* HEADER */
 .main-header {
     display: flex;
     justify-content: space-between;
@@ -103,7 +102,6 @@ body {
     transform: translateY(-7px) rotate(-45deg);
 }
 
-/* DIBUJOS SECTION */
 .dibujos-section {
     padding: 70px 0 60px;
     border-bottom: 1px solid #ddd;
@@ -114,6 +112,22 @@ body {
     font-size: 4.5rem;
     text-align: center;
     margin-bottom: 50px;
+    display: inline-block;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 0 12px;
+}
+
+.section-title-bebas::before {
+    content: '';
+    position: absolute;
+    bottom: -6px;
+    right: -35px;
+    width: 100%;
+    height: 55%;
+    background-color: #d9d9d9;
+    z-index: -1;
 }
 
 .dibujos-content {
@@ -146,41 +160,58 @@ body {
     line-height: 1.8;
 }
 
-/* QUOTE */
 .arte-quote {
-    position: relative;
-    padding: 30px 60px;
-    text-align: center;
+    padding: 20px 0 0;
+    max-width: 600px;
 }
 
 .arte-quote p {
-    font-size: 1.1rem;
+    font-size: 1.05rem;
     font-style: italic;
     color: var(--text-grey);
     line-height: 1.8;
-    max-width: 680px;
-    margin: 0 auto;
+    padding: 0 20px;
 }
 
 .quote-mark {
     font-family: Georgia, serif;
-    font-size: 5rem;
+    font-size: 3.5rem;
     color: var(--red);
-    line-height: 0;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.quote-mark::after {
+    content: '';
+    flex: 1;
+    height: 2px;
+    background: var(--red);
     display: block;
 }
 
 .quote-mark.open {
-    text-align: left;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
 .quote-mark.close {
-    text-align: right;
-    margin-top: 20px;
+    justify-content: flex-end;
+    margin-top: 10px;
 }
 
-/* COLECCIÓN SECTIONS */
+.quote-mark.close::after {
+    display: none;
+}
+
+.quote-mark.close::before {
+    content: '';
+    flex: 1;
+    height: 2px;
+    background: var(--red);
+    display: block;
+}
+
 .coleccion-section {
     padding: 70px 0;
     border-bottom: 1px solid #ddd;
@@ -208,19 +239,11 @@ body {
     border-radius: 2px;
 }
 
-/* MANOS GRID */
 .manos-grid {
     display: grid;
-    grid-template-columns: 1.8fr 1.3fr 1fr 1fr;
-    grid-template-rows: 240px 240px;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    grid-template-rows: 260px 260px;
     gap: 8px;
-}
-
-.manos-grid img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
 }
 
 .manos-grid .manos-wide {
@@ -229,7 +252,7 @@ body {
 }
 
 .manos-grid .manos-tall {
-    grid-column: 3 / 5;
+    grid-column: 4;
     grid-row: 1 / 3;
 }
 
@@ -246,20 +269,19 @@ body {
 .manos-grid img:nth-child(5) {
     grid-column: 3;
     grid-row: 2;
-    /* covered by tall */
 }
 
-.manos-grid img:nth-child(6) {
-    grid-column: 4;
-    grid-row: 2;
-    /* covered by tall */
+.manos-grid img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
 }
 
-/* ARTE DIGITAL GRID */
 .arte-grid {
     display: grid;
-    grid-template-columns: 2fr 1fr 1fr 1fr;
-    grid-template-rows: repeat(3, 200px);
+    grid-template-columns: 1.6fr 1fr 1fr 1fr;
+    grid-template-rows: repeat(3, 240px);
     gap: 8px;
 }
 
@@ -275,7 +297,71 @@ body {
     grid-row: 1 / 4;
 }
 
-/* FOOTER */
+.carousel-wrapper {
+    display: none;
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    border-radius: 4px;
+}
+
+.carousel-track {
+    display: flex;
+    transition: transform 0.4s ease;
+    will-change: transform;
+}
+
+.carousel-track img {
+    flex: 0 0 100%;
+    width: 100%;
+    height: 480px;
+    object-fit: cover;
+    display: block;
+}
+
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0,0,0,0.45);
+    color: #fff;
+    border: none;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    font-size: 1.1rem;
+    cursor: pointer;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+}
+
+.carousel-btn:hover { background: rgba(0,0,0,0.7); }
+.carousel-btn.prev { left: 10px; }
+.carousel-btn.next { right: 10px; }
+
+.carousel-dots {
+    display: flex;
+    justify-content: center;
+    gap: 7px;
+    margin-top: 12px;
+}
+
+.carousel-dots .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #ccc;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.carousel-dots .dot.active {
+    background: var(--red);
+}
+
 .main-footer {
     background: var(--black);
     color: white;
@@ -299,7 +385,6 @@ body {
     font-size: 1.8rem;
 }
 
-/* RESPONSIVE */
 @media (max-width: 992px) {
     .hamburger {
         display: flex;
@@ -354,58 +439,46 @@ body {
 
     .manos-grid {
         grid-template-columns: 1fr 1fr;
-        grid-template-rows: auto;
+        grid-template-rows: 200px 170px 170px;
     }
 
     .manos-grid .manos-wide {
         grid-column: 1 / 3;
-        grid-row: auto;
-        height: 200px;
+        grid-row: 1;
     }
 
     .manos-grid .manos-tall {
         grid-column: 2;
         grid-row: 2 / 4;
-        height: auto;
     }
 
     .manos-grid img:nth-child(3) {
         grid-column: 1;
         grid-row: 2;
-        height: 160px;
     }
 
     .manos-grid img:nth-child(4) {
         grid-column: 1;
         grid-row: 3;
-        height: 160px;
     }
 
     .manos-grid img:nth-child(5) {
-        grid-column: 1;
-        grid-row: 4;
-        height: 160px;
-    }
-
-    .manos-grid img:nth-child(6) {
         grid-column: 2;
         grid-row: 4;
-        height: 160px;
     }
 
     .arte-grid {
-        grid-template-columns: 1fr 1fr;
-        grid-template-rows: auto;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: 280px repeat(3, 180px);
     }
 
     .arte-grid .arte-featured {
-        grid-column: 1 / 3;
+        grid-column: 1 / 4;
         grid-row: 1;
-        height: 280px;
     }
 
     .arte-grid img:not(.arte-featured) {
-        height: 150px;
+        height: auto;
     }
 
     .footer-grid {
@@ -414,7 +487,7 @@ body {
     }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 600px) {
     .section-title-bebas {
         font-size: 2.5rem;
     }
@@ -423,7 +496,12 @@ body {
         font-size: 2rem;
     }
 
-    .arte-grid img:not(.arte-featured) {
-        height: 120px;
+    .manos-grid,
+    .arte-grid {
+        display: none;
+    }
+
+    .carousel-wrapper {
+        display: block;
     }
 }
