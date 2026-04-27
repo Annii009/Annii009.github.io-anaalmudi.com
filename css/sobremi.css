@@ -221,6 +221,23 @@ body {
     font-size: 1.4rem;
 }
 
+.contact-list a {
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    transition: color 0.2s ease;
+}
+
+.contact-list a:hover {
+    color: var(--red);
+}
+
+.contact-list a:hover i {
+    color: var(--red);
+}
+
 .software-grid {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
