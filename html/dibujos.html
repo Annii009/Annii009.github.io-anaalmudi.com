@@ -1,143 +1,109 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
-    <style type="text/css"></style>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ana Almudi - Arte</title>
+    <link rel="shortcut icon" href="../imagenes/icons/logocolor.png">
+    <link rel="icon" href="../imagenes/icons/logocolor.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;700&family=Bebas+Neue&family=Meow+Script&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="../css/dibujos.css">
-    <link rel="stylesheet" href="../css/style.css">
-    <title>Ana Almudi</title>
-    <script type="text/javascript" src="../js/index.js"></script>
-    <script type="text/javascript" src="../js/detalle.js"></script>
-    <link rel="shortcut icon" href="../imagenes/icons/logo.png">
-    <link rel="favicon" href="../imagenes/icons/logo.png">
-    <link rel="icon" href="../imagenes/icons/logo.png">
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-0NNDM198YW"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-0NNDM198YW');
-</script>
+    <script src="../js/dibujos.css" ></script>
 </head>
-
 <body>
-    <header class="header">
-        <div class="logo-container">
-            <a href="../html/index.html">
-                <img src="../imagenes/icons/logo.png" alt="Logo" class="logo">
+
+    <header class="main-header container">
+        <div class="header-left">
+            <a href="index.html">
+                <img src="../imagenes/icons/newlogo.png" alt="Logo" class="site-logo">
             </a>
         </div>
-
-        <nav class="nav-buttons">
-            <a href="../html/index.html" class="nav-btn active" onclick="setActive(this, 'desktop')">Principal</a>
-            <a href="../html/dibujos.html" class="nav-btn" onclick="setActive(this, 'desktop')">Dibujos</a>
-            <a href="../html/sobremi.html" class="nav-btn" onclick="setActive(this, 'desktop')">Sobre mí</a>
-            <a href="../html/disenyoweb.html" class="nav-btn" onclick="setActive(this, 'desktop')">Diseño Web</a>
-            <a href="../html/interiores.html" class="nav-btn" onclick="setActive(this, 'desktop')">Interiores</a>
+        <nav class="header-nav" id="main-nav">
+            <a href="../html/disenyoweb.html">Diseño</a>
+            <a href="../html/dibujos.html" class="active">Arte</a>
+            <a href="../html/desarrollo.html">Desarrollo web</a>
+            <a href="../html/sobremi.html">Sobre mi</a>
         </nav>
-
-        <div class="hamburger" onclick="toggleMenu()" aria-label="Abrir menú">
-            <span></span>
-            <span></span>
-            <span></span>
+        <div class="header-right">
+            <a href="../html/index.html#contacto" class="icon-mail">
+                <i class="fa-regular fa-envelope"></i>
+            </a>
+            <button class="hamburger" id="hamburger" aria-label="Abrir menú">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
         </div>
-
-
-        <div class="mobile-menu" id="mobileMenu">
-            <a href="../html/index.html" class="mobile-nav-btn active" onclick="setActive(this, 'mobile')">Principal</a>
-            <a href="../html/dibujos.html" class="mobile-nav-btn" onclick="setActive(this, 'mobile')">Dibujos</a>
-            <a href="../html/sobremi.html" class="mobile-nav-btn" onclick="setActive(this, 'mobile')">Sobre mí</a>
-            <a href="../html/disenyoweb.html" class="mobile-nav-btn" onclick="setActive(this, 'mobile')">Diseño Web</a>
-            <a href="../html/interiores.html" class="mobile-nav-btn" onclick="setActive(this, 'mobile')">Interiores</a>
-        </div>
-
-        <div class="overlay" id="overlay" onclick="closeMenu()"></div>
     </header>
 
-    <div class="galeria-container">
-        <div class="fila">
-            <img src="../imagenes/dibujos/chicamanchas.jpg" alt="Imagen 1">
-            <img src="../imagenes/dibujos/chicaconrosa.JPG" alt="Imagen 2">
-            <img src="../imagenes/dibujos/chicagorro.JPG" alt="Imagen 3">
-            <img src="../imagenes/dibujos/febrero.JPG" alt="Imagen 4">
-        </div>
-        <div class="fila">
-            <img src="../imagenes/dibujos/marzo.JPG" alt="Imagen 5">
-            <img src="../imagenes/dibujos/sanvalentin.JPG" alt="Imagen 6">
-            <img src="../imagenes/dibujos/planta.jpg" alt="Imagen 7">
-            <img src="../imagenes/dibujos/chicaflores.JPG" alt="Imagen 8">
-        </div>
-    </div>
+    <main>
 
-    <!-- Modal -->
-    <div id="modal" class="modal">
-        <span class="close">&times;</span>
-        <span class="arrow left">&#10094;</span>
-        <img class="modal-content" id="modal-img">
-        <span class="arrow right">&#10095;</span>
-    </div>
-
-
-    <div class="container">
-        <!-- Fila: texto izquierda / título derecha -->
-        <div class="intro-row">
-            <div class="intro-text">
-                <p>
-                    Me encanta crear ilustraciones digitales y una de mis herramientas favoritas es Procreate. Con esta
-                    app
-                    he desarrollado un estilo propio que combina detalles cuidados, colores vivos y un toque creativo en
-                    cada trazo.
-                    Trabajo tanto en dibujos artísticos como en ilustraciones más modernas y personalizadas, adaptándome
-                    a
-                    diferentes estilos y necesidades. Desde bocetos rápidos hasta piezas más elaboradas, cada proyecto
-                    lo
-                    realizo con dedicación y buscando siempre transmitir algo único.
-                    Procreate me permite jugar con pinceles, texturas y efectos, lo que hace que cada ilustración tenga
-                    su
-                    propia personalidad.
-                </p>
+        <!-- SECCIÓN DIBUJOS -->
+        <section class="dibujos-section container">
+            <h2 class="section-title-bebas">Dibujos</h2>
+            <div class="dibujos-content">
+                <div class="dibujos-image">
+                    <img src="../imagenes/icons/autoretrato.jpg" alt="Retrato a boli">
+                </div>
+                <div class="dibujos-text">
+                    <p>Desde que tengo memoria, el dibujo ha formado parte de mí. De niña pasaba horas con lápiz y papel, perdiéndome en ese pequeño mundo que podía crear con mis manos. En el colegio dibujaba para mis compañeros y, así, casi sin querer, el arte empezó a ocupar un lugar cada vez más grande en mi vida.</p>
+                    <p>Un día decidí aprender de verdad y empecé clases de dibujo. Allí descubrí nuevos estilos, nuevas formas de expresarme... y fue cuando apareció algo mágico: el arte del bolígrafo. Nunca me sentí cómoda con los pinceles ni con las mezclas de colores, así que cuando vi que se podía crear belleza solo con el azul de un boli Bic, me enamoré.</p>
+                    <p>Durante mucho tiempo el boli y el lápiz fueron mis compañeros fieles. Hasta que, con mi primer sueldo, me regalé un iPad. Tras un par de cursos en Domestika, encontré algo que había estado buscando todo este tiempo: mi propio estilo, mi manera de contar historias a través de líneas y trazos.</p>
+                </div>
             </div>
+            <blockquote class="arte-quote">
+                <span class="quote-mark open">&laquo;</span>
+                <p>Aprendí que no hacen falta mil colores para crear arte, a veces, basta uno solo para pintar todo lo que llevas dentro.</p>
+                <span class="quote-mark close">&raquo;</span>
+            </blockquote>
+        </section>
 
-            <div class="intro-title">
-                <h2>
-                    <span class="design">DIBUJOS EN </span> <span class="procreate">PROCREATE</span>
-                </h2>
+        <!-- COLECCIÓN MANOS DIGITAL -->
+        <section class="coleccion-section container">
+            <h3 class="coleccion-title">Colección de manos digital</h3>
+            <div class="manos-grid">
+                <img src="../imagenes/dibujos/rosa.jpeg" alt="Mano con cigarrillo" class="manos-wide">
+                <img src="../imagenes/dibujos/manos.JPG" alt="Mano brazalete" class="manos-tall">
+                <img src="../imagenes/dibujos/mano.JPG" alt="Mano elegante">
+                <img src="../imagenes/dibujos/rosacolor.jpg" alt="Mano con rosa">
+                <img src="../imagenes/dibujos/planta.jpg" alt="Mano planta">
+                <img src="../imagenes/dibujos/manoserpiente.JPG" alt="Mano serpiente">
+            </div>
+        </section>
+
+        <!-- COLECCIÓN ARTE DIGITAL -->
+        <section class="coleccion-section container">
+            <h3 class="coleccion-title">Colección de arte digital</h3>
+            <div class="arte-grid">
+                <img src="../imagenes/dibujos/chicaflores.JPG" alt="Arte digital 1" class="arte-featured">
+                <img src="../imagenes/dibujos/chicagorro.JPG" alt="Arte digital 2">
+                <img src="../imagenes/dibujos/marzo.JPG" alt="Arte digital 3">
+                <img src="../imagenes/dibujos/chicaconrosa.JPG" alt="Arte digital 4">
+                <img src="../imagenes/dibujos/barbie.jpg" alt="Arte digital 5">
+                <img src="../imagenes/dibujos/chicacolor.jpg" alt="Arte digital 6">
+                <img src="../imagenes/dibujos/enero.JPG" alt="Arte digital 7">
+                <img src="../imagenes/dibujos/sanvalentin.JPG" alt="Arte digital 8">
+                <img src="../imagenes/dibujos/chicamanchas.jpg" alt="Arte digital 9">
+                <img src="../imagenes/dibujos/febrero.JPG" alt="Arte digital 10">
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="main-footer">
+        <div class="container footer-grid">
+            <p>Si quieres ver mas novedades de lo que voy haciendo puedes seguirme en mis siguientes redes sociales:</p>
+            <div class="social-icons">
+                <a href="https://github.com/Annii009"><i class="fa-brands fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/ana-hernandez-almudi-4877a1242?utm_source=share_via&utm_content=profile&utm_medium=member_ios"><i class="fa-brands fa-linkedin-in"></i></a>
+                <a href="https://www.instagram.com/ana.almudi/"><i class="fa-brands fa-instagram"></i></a>
             </div>
         </div>
-
-        <!-- Fila de imágenes (sin cambios) -->
-        <div class="images-row">
-            <img src="../imagenes/dibujos/rosa.jpeg" alt="Imagen horizontal" class="horizontal">
-            <div class="vertical-images">
-                <img src="../imagenes/dibujos/mano.JPG" alt="Imagen vertical 1">
-                <img src="../imagenes/dibujos/manos.JPG" alt="Imagen vertical 2">
-            </div>
-        </div>
-    </div>
-
+    </footer>
 
 
 </body>
-
-<footer>
-    <div class="social-button">
-        <div class="social-icons">
-            <a href="https://www.linkedin.com/in/ana-hernandez-almudi-4877a1242?utm_source=share_via&utm_content=profile&utm_medium=member_ios" target="_blank" class="social-icon">
-                <img src="../imagenes/icons/linkedin.png" alt="LinkedIn" class="social-img">
-            </a>
-            <a href="https://www.instagram.com/ana.almudi/" target="_blank" class="social-icon">
-                <img src="../imagenes/icons/instagram.png" alt="Instagram" class="social-img">
-            </a>
-            <a href="https://github.com/Annii009" target="_blank" class="social-icon">
-                <img src="../imagenes/icons/github.png" alt="GitHub" class="social-img">
-            </a>
-        </div>
-    </div>
-</footer>
-
 </html>
