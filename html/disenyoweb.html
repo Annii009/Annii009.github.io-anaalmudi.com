@@ -3,172 +3,152 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/style.css">
+    <title>Ana Almudi - Desarrollo Web</title>
+    <link rel="shortcut icon" href="../imagenes/icons/logocolor.png">
+    <link rel="icon" href="../imagenes/icons/logocolor.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;700&family=Bebas+Neue&family=Meow+Script&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="../css/disenyoweb.css">
-    <title>Ana Almudi</title>
-    <link rel="shortcut icon" href="../imagenes/icons/logo.png">
-    <link rel="icon" href="../imagenes/icons/logo.png">
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Bodoni+Moda:ital,wght@0,400;0,900;1,400;1,900&display=swap" rel="stylesheet">
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-0NNDM198YW"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-0NNDM198YW');
-    </script>
+    <script src="../js/disenyoweb.js" ></script>
 </head>
 <body>
-
-    <header class="header">
-        <div class="logo-container">
-            <a href="../html/index.html">
-                <img src="../imagenes/icons/logo.png" alt="Logo" class="logo">
+    <header class="main-header container">
+        <div class="header-left">
+            <a href="index.html">
+                <img src="../imagenes/icons/newlogo.png" alt="Logo" class="site-logo">
             </a>
         </div>
-        <nav class="nav-buttons">
-            <a href="../html/index.html" class="nav-btn" onclick="setActive(this, 'desktop')">Principal</a>
-            <a href="../html/dibujos.html" class="nav-btn" onclick="setActive(this, 'desktop')">Dibujos</a>
-            <a href="../html/sobremi.html" class="nav-btn" onclick="setActive(this, 'desktop')">Sobre mí</a>
-            <a href="../html/disenyoweb.html" class="nav-btn active" onclick="setActive(this, 'desktop')">Diseño Web</a>
-            <a href="../html/interiores.html" class="nav-btn" onclick="setActive(this, 'desktop')">Interiores</a>
+        <nav class="header-nav" id="main-nav">
+            <a href="index.html">Diseño</a>
+            <a href="arte.html">Arte</a>
+            <a href="desarrollo.html" class="active">Desarrollo web</a>
+            <a href="sobremi.html">Sobre mi</a>
         </nav>
-        <div class="hamburger" onclick="toggleMenu()" aria-label="Abrir menú">
-            <span></span>
-            <span></span>
-            <span></span>
+        <div class="header-right">
+            <a href="index.html#contacto" class="icon-mail">
+                <i class="fa-regular fa-envelope"></i>
+            </a>
+            <button class="hamburger" id="hamburger" aria-label="Abrir menú">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
         </div>
     </header>
 
-    <div class="mobile-menu" id="mobileMenu">
-        <a href="../html/index.html" class="mobile-nav-btn" onclick="setActive(this, 'mobile')">Principal</a>
-        <a href="../html/dibujos.html" class="mobile-nav-btn" onclick="setActive(this, 'mobile')">Dibujos</a>
-        <a href="../html/sobremi.html" class="mobile-nav-btn" onclick="setActive(this, 'mobile')">Sobre mí</a>
-        <a href="../html/disenyoweb.html" class="mobile-nav-btn active" onclick="setActive(this, 'mobile')">Diseño Web</a>
-        <a href="../html/interiores.html" class="mobile-nav-btn" onclick="setActive(this, 'mobile')">Interiores</a>
-    </div>
-    <div class="overlay" id="overlay" onclick="closeMenu()"></div>
+    <main class="container">
 
-    <!-- TÍTULO -->
-    <div class="title-wrap">
-        <span class="title-label">Proyecto · 2025</span>
-        <h1 class="main-title">DISEÑO <em>WEB</em></h1>
-    </div>
+        <section class="page-hero">
+            <h1 class="page-title">Proyectos</h1>
+        </section>
 
-    <!-- TELÉFONOS -->
-    <section class="phones-section">
-        <div class="phone-wrap">
-            <div class="phone">
-                <div class="volume-button"></div>
-                <div class="phone-screen">
-                    <div class="notch"></div>
-                    <div class="screen-content"><img src="../imagenes/web/web1.png" alt="Captura 1"></div>
+        <!-- Proyecto 1: Ambustock -->
+        <article class="project-section">
+            <div class="project-mockup">
+                <img src="../imagenes/proyectos/ambustock-mockup.png" alt="Ambustock mockup">
+            </div>
+            <div class="project-info">
+                <h2 class="project-script-title">Ambustock<br><span>Gestión de ambulancias</span></h2>
+                <p class="project-description">AMBUSTOCK es una aplicación web para la gestión de ambulancias, diseñada para optimizar la coordinación y el seguimiento de los servicios. Con ella se puede gestionar el material que tiene cada ambulancia, crear nuevas ambulancias y gestionar los sanitarios y trabajadores de cada empresa.</p>
+                <div class="project-links">
+                    <a href="#" class="project-link-text">Saber Más ›</a>
+                </div>
+                <div class="brand-guide">
+                    <h4 class="brand-title">Guia de Marca</h4>
+                    <div class="brand-colors">
+                        <span class="color-swatch" style="background:#96181B;"></span>
+                        <span class="color-swatch" style="background:#6B7A8D;"></span>
+                    </div>
+                    <span class="brand-font">Bebas Neue / Source Sans Pro</span>
+                </div>
+                <div class="tech-stack">
+                    <h4 class="brand-title">Tecnologías</h4>
+                    <div class="tech-tags">
+                        <span>.NET C#</span>
+                        <span>VUE.JS</span>
+                        <span>AWS</span>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="phone-wrap">
-            <div class="phone">
-                <div class="volume-button"></div>
-                <div class="phone-screen">
-                    <div class="notch"></div>
-                    <div class="screen-content"><img src="../imagenes/web/web2.png" alt="Captura 2"></div>
-                </div>
-            </div>
-        </div>
-        <div class="phone-wrap">
-            <div class="phone">
-                <div class="volume-button"></div>
-                <div class="phone-screen">
-                    <div class="notch"></div>
-                    <div class="screen-content"><img src="../imagenes/web/web3.png" alt="Captura 3"></div>
-                </div>
-            </div>
-        </div>
-        <div class="phone-wrap">
-            <div class="phone">
-                <div class="volume-button"></div>
-                <div class="phone-screen">
-                    <div class="notch"></div>
-                    <div class="screen-content"><img src="../imagenes/web/web4.png" alt="Captura 4"></div>
-                </div>
-            </div>
-        </div>
-    </section>
+        </article>
 
-    <!-- TEXTO -->
-    <section class="text-section">
-        <div class="text-inner">
-            <div class="text-heading">
-                <span class="eyebrow">— El proyecto</span>
-                <h2>Una web que transmite<br><em>calma y profesionalidad</em></h2>
+        <!-- Proyecto 2: Essencia -->
+        <article class="project-section reverse">
+            <div class="project-mockup">
+                <img src="../imagenes/proyectos/essencia-mockup.png" alt="Essencia mockup">
             </div>
-            <div class="text-body">
-                <p>
-                    Diseñé y desarrollé la página web de <strong>Laura María, psicóloga</strong>, utilizando <strong>HTML, CSS y JavaScript</strong>. 
-                    Desde el inicio quise que la web transmitiera calma, confianza y profesionalidad, pero al mismo tiempo que fuera 
-                    moderna y fácil de navegar.
-                </p>
-                <p>
-                    La estructura está pensada para que todo sea claro y accesible: secciones como <em>Inicio, Sobre mí, Terapias, Hipnosis, 
-                    Talleres y Contacto</em> guían al usuario paso a paso para conocer los servicios de manera sencilla. Con CSS trabajé un 
-                    diseño limpio, con colores suaves y tipografías elegantes, y añadí efectos y animaciones que le dan un toque dinámico 
-                    sin recargar la experiencia.
-                </p>
-                <p>
-                    También me enfoqué en que fuera <strong>100% responsive</strong>, de modo que se vea y funcione bien tanto en móviles 
-                    como en tablets y ordenadores. Además, integré accesos directos a <strong>WhatsApp e Instagram</strong>, lo que permite a 
-                    los usuarios contactar de forma rápida y cómoda.
-                </p>
-                <p>
-                    En resumen, el resultado es una página web atractiva, funcional y actual, que refleja la esencia del trabajo de Laura 
-                    y a la vez ofrece a los visitantes una navegación fluida y agradable.
-                </p>
-                <div class="tags-row">
-                    <span class="tag">HTML5</span>
-                    <span class="tag">CSS3</span>
-                    <span class="tag">JavaScript</span>
-                    <span class="tag">Responsive</span>
+            <div class="project-info">
+                <h2 class="project-script-title">Essencia<br><span>Floristería y cafetería</span></h2>
+                <p class="project-description">ESSENCIA es mi trabajo de fin de grado en Diseño de Interiores, que decidí reutilizar para un pequeño proyecto de clase. La página está dedicada a una cafetería cuya decoración gira en torno a las flores, que también se venden en el propio establecimiento. Además, los clientes pueden realizar compras y encargos a través de la página web.</p>
+                <div class="project-links">
+                    <a href="#" class="project-link-text">Saber Más ›</a>
+                    <a href="#" class="project-link-text">Ver Página ›</a>
+                </div>
+                <div class="brand-guide">
+                    <h4 class="brand-title">Guia de Marca</h4>
+                    <div class="brand-colors">
+                        <span class="color-swatch" style="background:#5B8C8A;"></span>
+                        <span class="color-swatch" style="background:#E8A0A0;"></span>
+                        <span class="color-swatch" style="background:#7DAF7A;"></span>
+                    </div>
+                    <span class="brand-font">Cormorant Garamond / Montserrat</span>
+                </div>
+                <div class="tech-stack">
+                    <h4 class="brand-title">Tecnologías</h4>
+                    <div class="tech-tags">
+                        <span>HTML5</span>
+                        <span>CSS3</span>
+                        <span>JavaScript</span>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </article>
 
-    <!-- FLECHAS + LINK -->
-    <div class="content-container">
-        <div class="images-container">
-            <div class="image-section">
-                <img src="../imagenes/icons/flecha4.png" alt="Imagen de ejemplo">
+        <!-- Proyecto 3: Laura Maria -->
+        <article class="project-section">
+            <div class="project-mockup">
+                <img src="../imagenes/proyectos/lauramaria-mockup.png" alt="Laura Maria mockup">
             </div>
-            <div class="image-section">
-                <img src="../imagenes/icons/flecha3.png" alt="Imagen de ejemplo">
+            <div class="project-info">
+                <h2 class="project-script-title">Laura Maria Psicóloga</h2>
+                <p class="project-description">Laura Maria psicóloga es una profesional que necesitaba una página web para poder conectar con sus clientes. Realizada en HTML, CSS y JavaScript, con un diseño propio y al estilo de la propia profesional.</p>
+                <div class="project-links">
+                    <a href="#" class="project-link-text">Saber Más ›</a>
+                    <a href="#" class="project-link-text">Ver Página ›</a>
+                </div>
+                <div class="brand-guide">
+                    <h4 class="brand-title">Guia de Marca</h4>
+                    <div class="brand-colors">
+                        <span class="color-swatch" style="background:#5B7A5B;"></span>
+                        <span class="color-swatch" style="background:#A0769A;"></span>
+                        <span class="color-swatch" style="background:#F0D0E8;"></span>
+                    </div>
+                    <span class="brand-font">Playfair Display / Open Sans</span>
+                </div>
+                <div class="tech-stack">
+                    <h4 class="brand-title">Tecnologías</h4>
+                    <div class="tech-tags">
+                        <span>HTML5</span>
+                        <span>CSS3</span>
+                        <span>JavaScript</span>
+                    </div>
+                </div>
             </div>
-            <div class="image-section">
-                <img src="../imagenes/icons/flecha6.png" alt="Imagen de ejemplo">
-            </div>
-        </div>
-        <div class="link-section">
-            <a href="https://lauramariapsicologa.com/" class="link-button" target="_blank">
-                Link de la página web
-            </a>
-        </div>
-    </div>
+        </article>
 
-    <footer>
-        <div class="social-button">
+    </main>
+
+    <footer class="main-footer">
+        <div class="container footer-grid">
+            <p>Si quieres ver mas novedades de lo que voy haciendo puedes seguirme en mis siguientes redes sociales:</p>
             <div class="social-icons">
-                <a href="https://www.linkedin.com/in/ana-hernandez-almudi-4877a1242?utm_source=share_via&utm_content=profile&utm_medium=member_ios" target="_blank" class="social-icon">
-                    <img src="../imagenes/icons/linkedin.png" alt="LinkedIn" class="social-img">
-                </a>
-                <a href="https://www.instagram.com/ana.almudi/" target="_blank" class="social-icon">
-                    <img src="../imagenes/icons/instagram.png" alt="Instagram" class="social-img">
-                </a>
-                <a href="https://github.com/Annii009" target="_blank" class="social-icon">
-                    <img src="../imagenes/icons/github.png" alt="GitHub" class="social-img">
-                </a>
+                <a href="#"><i class="fa-brands fa-github"></i></a>
+                <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+                <a href="#"><i class="fa-brands fa-instagram"></i></a>
             </div>
         </div>
     </footer>
-
-    <script src="../js/index.js"></script>
-
 </body>
 </html>
