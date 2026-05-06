@@ -1,4 +1,3 @@
-// ===== CARRUSEL RENDERS =====
 const track = document.getElementById('carousel-track');
 if (track) {
     const slides = track.querySelectorAll('.carousel-slide');
@@ -9,11 +8,14 @@ if (track) {
     let startX = 0;
     let isDragging = false;
 
-    // Crear dots
     slides.forEach((_, i) => {
         const dot = document.createElement('button');
         dot.classList.add('carousel-dot');
-        if (i === 0) dot.classList.add('active');
+        dot.setAttribute('aria-label', `Ir a la imagen ${i + 1}`);
+        if (i === 0) {
+            dot.classList.add('active');
+            dot.setAttribute('aria-current', 'true');
+        }
         dot.addEventListener('click', () => goTo(i));
         dotsContainer.appendChild(dot);
     });
@@ -23,15 +25,25 @@ if (track) {
     function goTo(index) {
         current = (index + slides.length) % slides.length;
         track.style.transform = `translateX(-${current * 100}%)`;
-        dots.forEach(d => d.classList.remove('active'));
-        dots[current].classList.add('active');
+        dots.forEach((d, i) => {
+            if (i === current) {
+                d.classList.add('active');
+                d.setAttribute('aria-current', 'true');
+            } else {
+                d.classList.remove('active');
+                d.removeAttribute('aria-current');
+            }
+        });
     }
 
     btnPrev.addEventListener('click', () => goTo(current - 1));
     btnNext.addEventListener('click', () => goTo(current + 1));
 
-    // Swipe táctil
-    track.addEventListener('touchstart', e => { startX = e.touches[0].clientX; isDragging = true; }, { passive: true });
+    track.addEventListener('touchstart', e => { 
+        startX = e.touches[0].clientX; 
+        isDragging = true; 
+    }, { passive: true });
+
     track.addEventListener('touchend', e => {
         if (!isDragging) return;
         const diff = startX - e.changedTouches[0].clientX;
