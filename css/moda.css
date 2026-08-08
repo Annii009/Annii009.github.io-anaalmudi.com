@@ -4,7 +4,6 @@
     --black: #282828;
     --grey: #CACACA;
     --text-grey: #4C4C4C;
-    --mustard: #C98A2E;
 }
 
 * {
@@ -34,8 +33,6 @@ body {
     clip: rect(0 0 0 0);
     white-space: nowrap;
 }
-
-/* Header (idéntico al resto de subpáginas del sitio) */
 
 .main-header {
     display: flex;
@@ -115,8 +112,6 @@ body {
     transform: translateY(-7px) rotate(-45deg);
 }
 
-/* Hero — mismo recurso visual que el resto del sitio (bloque gris detrás del título) */
-
 .page-hero {
     padding: 60px 0 40px;
     border-bottom: 1px solid #ddd;
@@ -162,8 +157,6 @@ body {
     line-height: 1.5;
 }
 
-/* Secciones */
-
 .moda-section {
     padding: 45px 0;
     border-bottom: 1px solid #ddd;
@@ -199,8 +192,6 @@ body {
     margin-bottom: 20px;
     line-height: 1.5;
 }
-
-/* Perfil / interruptor de daltonismo */
 
 .perfil-box {
     max-width: 420px;
@@ -281,8 +272,6 @@ body {
     min-height: 1.2em;
 }
 
-/* Formularios (mismos estilos que el formulario de contacto de la home) */
-
 .input-grey,
 .input-file {
     background: var(--grey);
@@ -324,8 +313,6 @@ body {
     font-weight: 700;
 }
 
-/* Botón (idéntico al btn-send de la home) */
-
 .btn-retro {
     background: var(--black);
     color: white;
@@ -351,77 +338,136 @@ body {
     padding: 12px 20px;
 }
 
-/* Armario */
-
-.closet-list {
-    list-style: none;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-    gap: 16px;
-}
-
-.closet-item {
-    background: white;
-    border: 1px solid #ddd;
-    border-radius: 6px;
-    padding: 16px;
+.perfil-armario {
     display: flex;
-    gap: 12px;
-    align-items: flex-start;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 28px;
 }
 
-.closet-item-icon {
-    width: 40px;
-    height: 40px;
+.avatar-circle {
+    width: 64px;
+    height: 64px;
     border-radius: 50%;
     background: var(--grey);
+    border: 2px solid var(--black);
     display: flex;
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
-    font-size: 1.1rem;
+    cursor: pointer;
+    padding: 0;
+    overflow: hidden;
+    color: var(--black);
+    font-size: 1.4rem;
+}
+
+.avatar-circle img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.perfil-armario-nombre {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.5rem;
+    letter-spacing: 0.5px;
+}
+
+.perfil-armario-stats {
+    display: flex;
+    gap: 18px;
+    margin-top: 4px;
+    font-size: 0.85rem;
+    color: var(--text-grey);
+    flex-wrap: wrap;
+}
+
+.perfil-armario-stats strong {
     color: var(--black);
 }
 
-.closet-item-thumb {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
+.closet-list {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 14px;
+}
+
+.closet-tile {
+    position: relative;
+    aspect-ratio: 1 / 1;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid #ddd;
+    background: var(--grey);
+}
+
+.closet-tile-photo {
+    width: 100%;
+    height: 100%;
     object-fit: cover;
-    flex-shrink: 0;
+    display: block;
 }
 
-.closet-item-info {
-    flex: 1;
-    min-width: 0;
+.closet-tile-icon {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    color: var(--text-grey);
 }
 
-.closet-item-nombre {
-    font-weight: 700;
-    word-break: break-word;
+.closet-tile-caption {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(40, 40, 40, 0.75);
+    color: white;
+    padding: 6px 8px;
+    line-height: 1.25;
 }
 
-.closet-item-meta {
-    font-family: 'Space Mono', monospace;
+.closet-tile-nombre {
+    display: block;
     font-size: 0.78rem;
-    color: var(--text-grey);
-    margin-top: 4px;
+    font-weight: 700;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.closet-tile-meta {
+    display: block;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.68rem;
+    opacity: 0.85;
     text-transform: uppercase;
-    letter-spacing: 0.3px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
-.closet-item-borrar {
-    background: none;
+.closet-tile-borrar {
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.85);
     border: none;
-    color: var(--text-grey);
+    color: var(--black);
     cursor: pointer;
-    font-size: 1rem;
-    padding: 4px;
-    flex-shrink: 0;
+    font-size: 0.8rem;
 }
 
-.closet-item-borrar:hover {
-    color: var(--red);
+.closet-tile-borrar:hover {
+    background: var(--red);
+    color: white;
 }
 
 .closet-empty {
@@ -429,106 +475,319 @@ body {
     font-style: italic;
 }
 
-/* Chatbot */
+.armario-toolbar {
+    margin-bottom: 18px;
+}
 
-.chat-box {
-    max-width: 640px;
+.look-layout {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 32px;
+}
+
+.look-window {
+    width: 100%;
+    max-width: 420px;
+    flex-shrink: 0;
     background: white;
-    border: 1px solid #ddd;
+    border: 2px solid var(--black);
     border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+    overflow: hidden;
+    box-shadow: 6px 6px 0 var(--black);
+}
+
+.look-window-bar {
+    background: var(--black);
+    color: white;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 14px;
+    font-family: 'Press Start 2P', 'Space Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.5px;
+}
+
+.look-window-dots {
+    display: flex;
+    gap: 5px;
+    flex-shrink: 0;
+}
+
+.look-window-dots i {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--red);
+    display: block;
+}
+
+.look-window-dots i:nth-child(2) {
+    background: var(--grey);
+}
+
+.look-window-dots i:nth-child(3) {
+    background: white;
+}
+
+.look-window-title {
+    flex: 1;
+    text-align: center;
+}
+
+.look-window-sub {
+    opacity: 0.65;
+    white-space: nowrap;
+}
+
+.look-panel {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 22px 16px 16px;
+    border-bottom: 1px solid #ddd;
+    position: relative;
+}
+
+.look-panel-label {
+    position: absolute;
+    top: 6px;
+    left: 14px;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--text-grey);
+}
+
+.look-panel-visual {
+    flex: 1;
+    height: 140px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     overflow: hidden;
 }
 
-.chat-log {
-    padding: 20px;
-    max-height: 420px;
-    overflow-y: auto;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
+.look-panel-visual img {
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: contain;
 }
 
-.chat-bubble {
-    max-width: 85%;
-    padding: 12px 16px;
-    border-radius: 12px;
-    line-height: 1.45;
+.look-panel-vacio {
+    color: var(--text-grey);
+    font-size: 0.85rem;
+    text-align: center;
+    padding: 0 10px;
 }
 
-.chat-bubble p {
-    margin: 0;
+.look-panel-icono {
+    font-size: 2.6rem;
+    color: var(--grey);
 }
 
-.chat-bubble-user {
-    align-self: flex-end;
-    background: var(--red);
+.look-arrow {
+    background: var(--bg);
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    width: 34px;
+    height: 34px;
+    flex-shrink: 0;
+    cursor: pointer;
+    color: var(--black);
+}
+
+.look-arrow:hover {
+    background: var(--black);
     color: white;
-    border-bottom-right-radius: 3px;
 }
 
-.chat-bubble-bot {
-    align-self: flex-start;
+.look-arrow:disabled {
+    opacity: 0.3;
+    cursor: default;
     background: var(--bg);
     color: var(--black);
-    border: 1px solid #ddd;
-    border-bottom-left-radius: 3px;
 }
 
-.chat-bubble-bot.chat-bubble-error {
-    background: #FBE7E7;
-    border-color: #E3B4B4;
-    color: #7A1F1F;
-}
-
-.chat-bubble-system {
-    align-self: center;
-    background: transparent;
-    color: var(--text-grey);
-    font-style: italic;
-    text-align: center;
-    max-width: 100%;
-}
-
-.chat-bubble-typing {
-    align-self: flex-start;
-    background: var(--bg);
-    border: 1px solid #ddd;
-    color: var(--text-grey);
-    font-family: 'Space Mono', monospace;
-    font-size: 0.85rem;
-}
-
-.chat-form {
+.look-accesorios {
     display: flex;
-    gap: 0;
-    border-top: 1px solid #ddd;
+    gap: 10px;
+    padding: 14px 16px;
+    border-bottom: 1px solid #ddd;
+    flex-wrap: wrap;
+    min-height: 62px;
+    align-items: center;
 }
 
-.chat-form .input-grey {
-    background: white;
-    border-radius: 0;
-    padding: 16px 18px;
-}
-
-.chat-form .input-grey:focus {
-    outline: none;
+.look-accesorio-btn {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    border: 2px solid var(--grey);
     background: var(--bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    overflow: hidden;
+    padding: 0;
+    color: var(--black);
 }
 
-.btn-chat-send {
-    align-self: stretch;
-    border-radius: 0;
-    padding: 0 22px;
+.look-accesorio-btn img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
-/* Toque retro contenido: un acento cálido puntual, no un cambio de paleta */
-.btn-chat-send:hover {
-    opacity: 1;
-    background: var(--mustard);
+.look-accesorio-btn.activo {
+    border-color: var(--red);
 }
 
-/* Footer */
+.look-window-actions {
+    display: flex;
+    gap: 8px;
+    padding: 14px 16px;
+    flex-wrap: wrap;
+}
+
+.look-window-actions .btn-retro {
+    flex: 1;
+    min-width: 120px;
+    padding: 10px 12px;
+    font-size: 0.85rem;
+    text-align: center;
+}
+
+.look-window-counter {
+    text-align: right;
+    padding: 0 16px 6px;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--text-grey);
+}
+
+.look-window .perfil-status {
+    padding: 0 16px 14px;
+}
+
+.looks-guardados {
+    flex: 1;
+    min-width: 280px;
+}
+
+.looks-guardados-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.3rem;
+    letter-spacing: 0.5px;
+    margin-bottom: 14px;
+}
+
+.looks-list {
+    list-style: none;
+    column-count: 2;
+    column-gap: 16px;
+}
+
+.look-card {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 12px;
+    margin-bottom: 16px;
+    break-inside: avoid;
+}
+
+.look-card-imagen {
+    background: var(--bg);
+    border-radius: 6px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 16px 10px;
+}
+
+.look-card-prenda {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.look-card-prenda img {
+    max-width: 80%;
+    max-height: 120px;
+    object-fit: contain;
+}
+
+.look-card-prenda i {
+    font-size: 1.6rem;
+    color: var(--grey);
+}
+
+.look-card-accesorios-mini {
+    display: flex;
+    gap: 6px;
+    margin-top: 4px;
+}
+
+.look-card-accesorio-mini {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 2px solid var(--red);
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.look-card-accesorio-mini img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.look-card-accesorio-mini i {
+    font-size: 0.7rem;
+    color: var(--text-grey);
+}
+
+.look-card-fecha {
+    display: block;
+    margin-top: 10px;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--text-grey);
+    text-transform: uppercase;
+}
+
+.look-card-borrar {
+    position: absolute;
+    top: 18px;
+    right: 18px;
+    background: rgba(255, 255, 255, 0.85);
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    border: none;
+    color: var(--text-grey);
+    cursor: pointer;
+}
+
+.look-card-borrar:hover {
+    background: var(--red);
+    color: white;
+}
 
 .main-footer {
     background: var(--black);
@@ -594,6 +853,18 @@ body {
 
     .prenda-form-row {
         flex-direction: column;
+    }
+
+    .look-window-actions .btn-retro {
+        min-width: 100%;
+    }
+
+    .look-window {
+        max-width: 100%;
+    }
+
+    .looks-list {
+        column-count: 2;
     }
 
     .footer-grid {

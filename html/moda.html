@@ -5,18 +5,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Combina sin Confundir | Ana Almudi</title>
-    <meta name="description" content="Combina sin Confundir: tu armario virtual con un chatbot que te ayuda a combinar la ropa que has subido, tengas o no daltonismo.">
+    <meta name="description" content="Combina sin Confundir: tu armario cápsula virtual, con simulador de daltonismo incluido.">
     <link rel="shortcut icon" href="../imagenes/icons/logocolor.png">
     <link rel="icon" href="../imagenes/icons/logocolor.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;700&family=Bebas+Neue&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;700&family=Bebas+Neue&family=Space+Mono:wght@400;700&family=Press+Start+2P&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="../css/moda.css">
     <script src="../js/moda.js" defer></script>
 </head>
 
 <body>
+    <svg class="visually-hidden" aria-hidden="true">
+        <defs>
+            <filter id="filtro-protanopia">
+                <feColorMatrix type="matrix" values="0.567,0.433,0,0,0  0.558,0.442,0,0,0  0,0.242,0.758,0,0  0,0,0,1,0" />
+            </filter>
+            <filter id="filtro-deuteranopia">
+                <feColorMatrix type="matrix" values="0.625,0.375,0,0,0  0.7,0.3,0,0,0  0,0.3,0.7,0,0  0,0,0,1,0" />
+            </filter>
+            <filter id="filtro-tritanopia">
+                <feColorMatrix type="matrix" values="0.95,0.05,0,0,0  0,0.433,0.567,0,0  0,0.475,0.525,0,0  0,0,0,1,0" />
+            </filter>
+        </defs>
+    </svg>
+
     <header class="main-header container">
         <div class="header-left">
             <a href="../html/index.html" aria-label="logo Ana Almudi">
@@ -46,13 +60,13 @@
 
         <section class="page-hero">
             <span class="page-badge">Proyecto personal</span>
-            <h1 class="page-title">Combina sin Confundir</h1>
-            <p class="page-subtitle">Tu armario virtual con un chatbot integrado: sube tu ropa y pregúntale qué combinar, tengas o no daltonismo.</p>
+            <h1 class="page-title">Combina tu moda</h1>
+            <p class="page-subtitle">Tu armario cápsula virtual: sube tus prendas, monta tu look del día y simula cómo se vería para distintos tipos de daltonismo.</p>
         </section>
 
         <section class="moda-section" aria-labelledby="perfil-title">
             <h2 id="perfil-title" class="moda-section-title">1. Tu perfil <span class="opcional-tag">opcional</span></h2>
-            <p class="section-help">Si tienes daltonismo, indícanoslo para que el chatbot evite combinaciones de color difíciles de distinguir para ti. Si no, no pasa nada, puedes dejarlo desactivado.</p>
+            <p class="section-help">Si tienes daltonismo, indícanoslo para poder simular tu visión sobre tu propio armario. Si no, no pasa nada, puedes dejarlo desactivado.</p>
 
             <div class="perfil-box">
                 <label class="toggle-switch">
@@ -75,7 +89,23 @@
         </section>
 
         <section class="moda-section" aria-labelledby="armario-title">
-            <h2 id="armario-title" class="moda-section-title">2. Tu armario</h2>
+            <h2 id="armario-title" class="moda-section-title">2. Tu armario cápsula</h2>
+
+            <div class="perfil-armario">
+                <button type="button" class="avatar-circle" id="avatar-circle" aria-label="Cambiar foto de perfil">
+                    <img id="avatar-img" src="" alt="" hidden>
+                    <i class="fa-solid fa-user" id="avatar-icon" aria-hidden="true"></i>
+                </button>
+                <input type="file" id="avatar-input" class="visually-hidden" accept="image/*">
+                <div class="perfil-armario-info">
+                    <h3 class="perfil-armario-nombre">Mi Armario</h3>
+                    <div class="perfil-armario-stats">
+                        <span><strong id="stat-prendas">0</strong> prendas</span>
+                        <span><strong id="stat-combinaciones">0</strong> combinaciones</span>
+                        <span><strong id="stat-looks">0</strong> looks guardados</span>
+                    </div>
+                </div>
+            </div>
 
             <form id="prenda-form" class="prenda-form">
                 <div class="prenda-form-row">
@@ -100,30 +130,76 @@
                         <input type="text" id="prenda-color" class="input-grey" placeholder="Ej: azul marino" required>
                     </div>
                     <div class="form-field">
-                        <label for="prenda-foto">Foto (opcional)</label>
+                        <label for="prenda-foto">Foto (opcional, se le quita el fondo sola)</label>
                         <input type="file" id="prenda-foto" class="input-file" accept="image/*">
                     </div>
                 </div>
-                <button type="submit" class="btn-retro">Añadir prenda</button>
+                <button type="submit" class="btn-retro" id="prenda-submit">Añadir prenda</button>
+                <p id="prenda-status" class="perfil-status" role="status" aria-live="polite"></p>
             </form>
+
+            <div class="armario-toolbar" id="simular-wrap" hidden>
+                <label class="toggle-switch">
+                    <input type="checkbox" id="simular-toggle">
+                    <span class="toggle-track" aria-hidden="true"></span>
+                    <span class="toggle-label">Simular mi daltonismo sobre el armario</span>
+                </label>
+            </div>
 
             <ul id="closet-list" class="closet-list" aria-label="Prendas guardadas en tu armario"></ul>
             <p id="closet-vacio" class="closet-empty">Todavía no has añadido ninguna prenda.</p>
         </section>
 
-        <section class="moda-section" aria-labelledby="chat-title">
-            <h2 id="chat-title" class="moda-section-title">3. Pregúntale a tu armario</h2>
-            <p class="section-help">Escríbele como a un amigo con buen ojo: "¿qué me pongo con los vaqueros?", "combina la chaqueta roja", "dame un look para una cena"...</p>
+        <section class="moda-section" aria-labelledby="look-title">
+            <h2 id="look-title" class="moda-section-title">3. Look de hoy</h2>
+            <p class="section-help">Recorre tu armario prenda a prenda con las flechas, o pulsa "Aleatorio" para que te proponga una combinación.</p>
 
-            <div class="chat-box">
-                <div id="chat-log" class="chat-log" role="log" aria-live="polite" aria-label="Conversación con tu armario"></div>
-                <form id="chat-form" class="chat-form">
-                    <label for="chat-input" class="visually-hidden">Escribe tu pregunta</label>
-                    <input type="text" id="chat-input" class="input-grey" placeholder="Ej: ¿qué me pongo con la chaqueta vaquera?" autocomplete="off" required>
-                    <button type="submit" class="btn-retro btn-chat-send" aria-label="Enviar pregunta">
-                        <i class="fa-solid fa-paper-plane" aria-hidden="true"></i>
-                    </button>
-                </form>
+            <div class="look-layout">
+                <div class="look-window" id="look-window">
+                    <div class="look-window-bar">
+                        <span class="look-window-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+                        <span class="look-window-title">ARMARIO</span>
+                        <span class="look-window-sub">Look de hoy</span>
+                    </div>
+
+                    <div class="look-panel" data-tipo="camisa">
+                        <span class="look-panel-label">Top</span>
+                        <button type="button" class="look-arrow look-arrow-prev" aria-label="Camisa anterior"><i class="fa-solid fa-chevron-left"></i></button>
+                        <div class="look-panel-visual" id="look-visual-camisa"></div>
+                        <button type="button" class="look-arrow look-arrow-next" aria-label="Camisa siguiente"><i class="fa-solid fa-chevron-right"></i></button>
+                    </div>
+
+                    <div class="look-panel" data-tipo="pantalon">
+                        <span class="look-panel-label">Bottom</span>
+                        <button type="button" class="look-arrow look-arrow-prev" aria-label="Pantalón anterior"><i class="fa-solid fa-chevron-left"></i></button>
+                        <div class="look-panel-visual" id="look-visual-pantalon"></div>
+                        <button type="button" class="look-arrow look-arrow-next" aria-label="Pantalón siguiente"><i class="fa-solid fa-chevron-right"></i></button>
+                    </div>
+
+                    <div class="look-panel" data-tipo="zapatos">
+                        <span class="look-panel-label">Shoes</span>
+                        <button type="button" class="look-arrow look-arrow-prev" aria-label="Zapatos anteriores"><i class="fa-solid fa-chevron-left"></i></button>
+                        <div class="look-panel-visual" id="look-visual-zapatos"></div>
+                        <button type="button" class="look-arrow look-arrow-next" aria-label="Zapatos siguientes"><i class="fa-solid fa-chevron-right"></i></button>
+                    </div>
+
+                    <div class="look-accesorios" id="look-accesorios" aria-label="Accesorios opcionales para el look"></div>
+
+                    <div class="look-window-actions">
+                        <button type="button" class="btn-retro btn-small" id="look-guardar">Guardar look</button>
+                        <button type="button" class="btn-retro btn-small" id="look-aleatorio">Aleatorio</button>
+                        <button type="button" class="btn-retro btn-small" id="look-wear">¡Me lo pongo!</button>
+                    </div>
+
+                    <p class="look-window-counter" id="look-counter"></p>
+                    <p id="look-status" class="perfil-status" role="status" aria-live="polite"></p>
+                </div>
+
+                <div class="looks-guardados">
+                    <h3 class="looks-guardados-title">Tus looks guardados</h3>
+                    <ul id="looks-list" class="looks-list" aria-label="Looks guardados"></ul>
+                    <p id="looks-vacio" class="closet-empty">Todavía no has guardado ningún look.</p>
+                </div>
             </div>
         </section>
     </main>

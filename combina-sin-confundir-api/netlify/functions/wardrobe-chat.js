@@ -1,11 +1,6 @@
-// Función serverless que conecta la app "Combina sin Confundir" con la API
-// gratuita de Google Gemini (no necesita tarjeta de crédito).
-// Documentación: https://ai.google.dev/gemini-api/docs
-
 const GEMINI_MODEL = "gemini-3.6-flash";
 const GEMINI_URL = `https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:generateContent`;
 
-// En producción, pon aquí tu dominio (ej: "https://anaalmudi.com") en vez de "*".
 const ALLOWED_ORIGIN = process.env.ALLOWED_ORIGIN || "https://anaalmudi.com";
 
 const CORS_HEADERS = {
@@ -93,7 +88,6 @@ exports.handler = async (event) => {
     };
   }
 
-  // Gemini usa los roles "user" y "model" (no "assistant").
   const contents = mensajes.map((m) => ({
     role: m.role === "assistant" ? "model" : "user",
     parts: [{ text: m.content }],

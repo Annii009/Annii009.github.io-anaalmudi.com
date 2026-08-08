@@ -1,4 +1,3 @@
-// ---- Menú hamburguesa (mismo patrón que el resto del sitio) ----
 const hamburger = document.getElementById('hamburger');
 const nav = document.getElementById('main-nav');
 
@@ -23,13 +22,10 @@ if (hamburger && nav) {
     });
 }
 
-// ---- Combina sin Confundir ----
-
 const LS_ARMARIO = 'csc_armario';
-const LS_DALTONISMO = 'csc_daltonismo'; // '' = sin perfil, o 'protanopia' | 'deuteranopia' | 'tritanopia'
-
-// Función serverless ya desplegada (ver combina-sin-confundir-api/). No hace falta configurar nada.
-const CHAT_ENDPOINT = 'https://combina-sin-confundir-api.netlify.app/.netlify/functions/wardrobe-chat';
+const LS_DALTONISMO = 'csc_daltonismo';
+const LS_AVATAR = 'csc_avatar';
+const LS_LOOKS = 'csc_looks';
 
 const TIPO_LABELS = {
     camisa: 'Camisa / camiseta',
@@ -53,22 +49,7 @@ function escapeHtml(str) {
     return div.innerHTML;
 }
 
-// ---- Armario ----
-
-function cargarArmario() {
-    try {
-        return JSON.parse(localStorage.getItem(LS_ARMARIO)) || [];
-    } catch {
-        return [];
-    }
-}
-
-function guardarArmario(armario) {
-    localStorage.setItem(LS_ARMARIO, JSON.stringify(armario));
-}
-
-// Reduce el tamaño de la foto antes de guardarla en localStorage.
-function redimensionarImagen(file, anchoMaximo) {
+function redimensionarImagen(fileOrBlob, anchoMaximo) {
     return new Promise((resolve, reject) => {
         const reader = new FileReader();
         reader.onerror = reject;
@@ -82,13 +63,143 @@ function redimensionarImagen(file, anchoMaximo) {
                 canvas.height = img.height * escala;
                 const ctx = canvas.getContext('2d');
                 ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-                resolve(canvas.toDataURL('image/jpeg', 0.8));
+                resolve(canvas.toDataURL('image/png'));
             };
             img.src = reader.result;
         };
-        reader.readAsDataURL(file);
+        reader.readAsDataURL(fileOrBlob);
     });
 }
+
+async function quitarFondoSiSePuede(file) {
+    try {
+        const { removeBackground } = await import('https://esm.sh/@imgly/background-removal');
+        return await removeBackground(file);
+    } catch (err) {
+        console.warn('No se pudo quitar el fondo, se usa la foto original:', err);
+        return file;
+    }
+}
+
+function cargarArmario() {
+    try {
+        return JSON.parse(localStorage.getItem(LS_ARMARIO)) || [];
+    } catch {
+        return [];
+    }
+}
+
+function guardarArmario(armario) {
+    localStorage.setItem(LS_ARMARIO, JSON.stringify(armario));
+}
+
+function cargarLooks() {
+    try {
+        return JSON.parse(localStorage.getItem(LS_LOOKS)) || [];
+    } catch {
+        return [];
+    }
+}
+
+function guardarLooks(looks) {
+    localStorage.setItem(LS_LOOKS, JSON.stringify(looks));
+}
+
+function prendasPorTipo(tipo) {
+    return cargarArmario().filter(p => p.tipo === tipo);
+}
+
+function formatearFecha(timestamp) {
+    return new Date(timestamp).toLocaleDateString('es-ES', { day: 'numeric', month: 'short' });
+}
+
+function renderizarLooksGuardados() {
+    const looks = cargarLooks();
+    const armario = cargarArmario();
+    const lista = document.getElementById('looks-list');
+    const vacio = document.getElementById('looks-vacio');
+
+    lista.innerHTML = '';
+    vacio.style.display = looks.length === 0 ? 'block' : 'none';
+
+    looks.slice().reverse().forEach(look => {
+        const camisa = armario.find(p => p.id === look.camisaId);
+        const pantalon = armario.find(p => p.id === look.pantalonId);
+        const zapatos = armario.find(p => p.id === look.zapatosId);
+        const accesorios = (look.accesorios || []).map(id => armario.find(p => p.id === id)).filter(Boolean);
+
+        const miniatura = (prenda, tipo) => {
+            if (!prenda) return '<i class="fa-solid fa-question" aria-hidden="true"></i>';
+            return prenda.foto
+                ? `<img src="${prenda.foto}" alt="${escapeHtml(prenda.nombre)}">`
+                : `<i class="fa-solid ${TIPO_ICONS[tipo] || 'fa-tag'}" aria-hidden="true"></i>`;
+        };
+
+        const li = document.createElement('li');
+        li.className = 'look-card';
+        li.innerHTML = `
+            <button type="button" class="look-card-borrar" aria-label="Eliminar este look guardado" data-id="${look.id}">
+                <i class="fa-solid fa-trash" aria-hidden="true"></i>
+            </button>
+            <div class="look-card-imagen">
+                <span class="look-card-prenda">${miniatura(camisa, 'camisa')}</span>
+                <span class="look-card-prenda">${miniatura(pantalon, 'pantalon')}</span>
+                <span class="look-card-prenda">${miniatura(zapatos, 'zapatos')}</span>
+                ${accesorios.length > 0 ? `
+                <div class="look-card-accesorios-mini">
+                    ${accesorios.map(a => `<span class="look-card-accesorio-mini">${miniatura(a, a.tipo)}</span>`).join('')}
+                </div>` : ''}
+            </div>
+            <span class="look-card-fecha">${formatearFecha(look.fecha)}</span>
+        `;
+        lista.appendChild(li);
+    });
+}
+
+document.getElementById('looks-list').addEventListener('click', (e) => {
+    const btn = e.target.closest('.look-card-borrar');
+    if (!btn) return;
+    const id = btn.dataset.id;
+    const looks = cargarLooks().filter(l => String(l.id) !== id);
+    guardarLooks(looks);
+    renderizarLooksGuardados();
+    actualizarContadores();
+});
+
+function actualizarContadores() {
+    const armario = cargarArmario();
+    document.getElementById('stat-prendas').textContent = armario.length;
+
+    const nCamisas = prendasPorTipo('camisa').length;
+    const nPantalones = prendasPorTipo('pantalon').length;
+    const nZapatos = prendasPorTipo('zapatos').length;
+    document.getElementById('stat-combinaciones').textContent = nCamisas * nPantalones * nZapatos;
+
+    document.getElementById('stat-looks').textContent = cargarLooks().length;
+}
+
+const avatarCircle = document.getElementById('avatar-circle');
+const avatarInput = document.getElementById('avatar-input');
+const avatarImg = document.getElementById('avatar-img');
+const avatarIcon = document.getElementById('avatar-icon');
+
+function aplicarAvatarGuardado() {
+    const avatar = localStorage.getItem(LS_AVATAR);
+    if (avatar) {
+        avatarImg.src = avatar;
+        avatarImg.hidden = false;
+        avatarIcon.hidden = true;
+    }
+}
+
+avatarCircle.addEventListener('click', () => avatarInput.click());
+
+avatarInput.addEventListener('change', async () => {
+    if (!avatarInput.files[0]) return;
+    const avatar = await redimensionarImagen(avatarInput.files[0], 160);
+    localStorage.setItem(LS_AVATAR, avatar);
+    aplicarAvatarGuardado();
+});
 
 function renderizarArmario() {
     const armario = cargarArmario();
@@ -100,28 +211,32 @@ function renderizarArmario() {
 
     armario.forEach(prenda => {
         const li = document.createElement('li');
-        li.className = 'closet-item';
+        li.className = 'closet-tile';
 
         const visual = prenda.foto
-            ? `<img src="${prenda.foto}" alt="" class="closet-item-thumb">`
-            : `<span class="closet-item-icon" aria-hidden="true"><i class="fa-solid ${TIPO_ICONS[prenda.tipo] || 'fa-tag'}"></i></span>`;
+            ? `<img src="${prenda.foto}" alt="" class="closet-tile-photo">`
+            : `<span class="closet-tile-icon" aria-hidden="true"><i class="fa-solid ${TIPO_ICONS[prenda.tipo] || 'fa-tag'}"></i></span>`;
 
         li.innerHTML = `
             ${visual}
-            <div class="closet-item-info">
-                <div class="closet-item-nombre">${escapeHtml(prenda.nombre)}</div>
-                <div class="closet-item-meta">${escapeHtml(TIPO_LABELS[prenda.tipo] || prenda.tipo)} · ${escapeHtml(prenda.color)}</div>
-            </div>
-            <button type="button" class="closet-item-borrar" aria-label="Eliminar ${escapeHtml(prenda.nombre)}" data-id="${prenda.id}">
+            <button type="button" class="closet-tile-borrar" aria-label="Eliminar ${escapeHtml(prenda.nombre)}" data-id="${prenda.id}">
                 <i class="fa-solid fa-trash" aria-hidden="true"></i>
             </button>
+            <div class="closet-tile-caption">
+                <span class="closet-tile-nombre">${escapeHtml(prenda.nombre)}</span>
+                <span class="closet-tile-meta">${escapeHtml(TIPO_LABELS[prenda.tipo] || prenda.tipo)} · ${escapeHtml(prenda.color)}</span>
+            </div>
         `;
         lista.appendChild(li);
     });
+
+    actualizarContadores();
+    renderizarLook();
+    renderizarLooksGuardados();
 }
 
 document.getElementById('closet-list').addEventListener('click', (e) => {
-    const btn = e.target.closest('.closet-item-borrar');
+    const btn = e.target.closest('.closet-tile-borrar');
     if (!btn) return;
     const id = btn.dataset.id;
     const armario = cargarArmario().filter(p => String(p.id) !== id);
@@ -136,12 +251,21 @@ document.getElementById('prenda-form').addEventListener('submit', async (e) => {
     const tipo = document.getElementById('prenda-tipo').value;
     const color = document.getElementById('prenda-color').value.trim();
     const fotoInput = document.getElementById('prenda-foto');
+    const boton = document.getElementById('prenda-submit');
+    const status = document.getElementById('prenda-status');
 
     if (!nombre || !color) return;
 
     let foto = null;
     if (fotoInput.files[0]) {
-        foto = await redimensionarImagen(fotoInput.files[0], 240);
+        boton.disabled = true;
+        status.textContent = 'Quitando el fondo de la foto…';
+
+        const sinFondo = await quitarFondoSiSePuede(fotoInput.files[0]);
+        foto = await redimensionarImagen(sinFondo, 300);
+
+        status.textContent = '';
+        boton.disabled = false;
     }
 
     const armario = cargarArmario();
@@ -152,11 +276,13 @@ document.getElementById('prenda-form').addEventListener('submit', async (e) => {
     e.target.reset();
 });
 
-// ---- Perfil de daltonismo (opcional) ----
-
 const daltonismoToggle = document.getElementById('daltonismo-toggle');
 const daltonismoTipoWrap = document.getElementById('daltonismo-tipo-wrap');
 const daltonismoSelect = document.getElementById('daltonismo-select');
+const simularWrap = document.getElementById('simular-wrap');
+const simularToggle = document.getElementById('simular-toggle');
+const closetList = document.getElementById('closet-list');
+const lookWindow = document.getElementById('look-window');
 
 function cargarDaltonismo() {
     return localStorage.getItem(LS_DALTONISMO) || '';
@@ -167,9 +293,13 @@ function aplicarEstadoDaltonismo(valorGuardado) {
         daltonismoToggle.checked = true;
         daltonismoTipoWrap.hidden = false;
         daltonismoSelect.value = valorGuardado;
+        simularWrap.hidden = false;
     } else {
         daltonismoToggle.checked = false;
         daltonismoTipoWrap.hidden = true;
+        simularWrap.hidden = true;
+        simularToggle.checked = false;
+        aplicarFiltroSimulacion();
     }
 }
 
@@ -178,106 +308,155 @@ aplicarEstadoDaltonismo(cargarDaltonismo());
 function guardarDaltonismoActual() {
     const valor = daltonismoToggle.checked ? daltonismoSelect.value : '';
     localStorage.setItem(LS_DALTONISMO, valor);
+    aplicarEstadoDaltonismo(valor);
+
     const status = document.getElementById('perfil-guardado');
     status.textContent = 'Perfil guardado.';
     setTimeout(() => { status.textContent = ''; }, 2500);
 }
 
-daltonismoToggle.addEventListener('change', () => {
-    daltonismoTipoWrap.hidden = !daltonismoToggle.checked;
-    guardarDaltonismoActual();
-});
-
+daltonismoToggle.addEventListener('change', guardarDaltonismoActual);
 daltonismoSelect.addEventListener('change', guardarDaltonismoActual);
 
-// ---- Chat con el armario ----
-
-const chatLog = document.getElementById('chat-log');
-const chatForm = document.getElementById('chat-form');
-const chatInput = document.getElementById('chat-input');
-
-// Historial de la conversación en memoria (se reinicia si recargas la página).
-let mensajesChat = [];
-
-function anadirBurbuja(texto, tipo) {
-    const burbuja = document.createElement('div');
-    burbuja.className = `chat-bubble chat-bubble-${tipo}`;
-    burbuja.innerHTML = `<p>${escapeHtml(texto)}</p>`;
-    chatLog.appendChild(burbuja);
-    chatLog.scrollTop = chatLog.scrollHeight;
-    return burbuja;
+function aplicarFiltroSimulacion() {
+    const tipo = cargarDaltonismo();
+    const filtro = (simularToggle.checked && tipo) ? `url(#filtro-${tipo})` : '';
+    closetList.style.filter = filtro;
+    lookWindow.style.filter = filtro;
 }
 
-function anadirIndicadorEscribiendo() {
-    const burbuja = document.createElement('div');
-    burbuja.className = 'chat-bubble chat-bubble-typing';
-    burbuja.textContent = 'Mirando tu armario…';
-    chatLog.appendChild(burbuja);
-    chatLog.scrollTop = chatLog.scrollHeight;
-    return burbuja;
+simularToggle.addEventListener('change', aplicarFiltroSimulacion);
+
+const LOOK_TIPOS = ['camisa', 'pantalon', 'zapatos'];
+const lookIndices = { camisa: 0, pantalon: 0, zapatos: 0 };
+const accesoriosIncluidos = new Set();
+
+function mostrarEstadoLook(mensaje) {
+    const status = document.getElementById('look-status');
+    status.textContent = mensaje;
+    setTimeout(() => { status.textContent = ''; }, 2500);
 }
 
-if (cargarArmario().length === 0) {
-    anadirBurbuja('Añade alguna prenda a tu armario y luego pregúntame qué combinar.', 'system');
-} else {
-    anadirBurbuja('¡Hola! Ya veo tu armario. Pregúntame qué te pones hoy o cómo combinar alguna prenda.', 'system');
+function renderizarLook() {
+    LOOK_TIPOS.forEach(tipo => {
+        const prendas = prendasPorTipo(tipo);
+        const visual = document.getElementById(`look-visual-${tipo}`);
+        const panel = visual.closest('.look-panel');
+        const prevBtn = panel.querySelector('.look-arrow-prev');
+        const nextBtn = panel.querySelector('.look-arrow-next');
+
+        if (prendas.length === 0) {
+            visual.innerHTML = '<span class="look-panel-vacio">Añade una prenda de este tipo</span>';
+            prevBtn.disabled = true;
+            nextBtn.disabled = true;
+            return;
+        }
+
+        lookIndices[tipo] = ((lookIndices[tipo] % prendas.length) + prendas.length) % prendas.length;
+        const prenda = prendas[lookIndices[tipo]];
+
+        visual.innerHTML = prenda.foto
+            ? `<img src="${prenda.foto}" alt="${escapeHtml(prenda.nombre)}">`
+            : `<i class="fa-solid ${TIPO_ICONS[tipo] || 'fa-tag'} look-panel-icono" aria-hidden="true"></i>`;
+
+        prevBtn.disabled = prendas.length <= 1;
+        nextBtn.disabled = prendas.length <= 1;
+    });
+
+    renderizarAccesorios();
+    actualizarContadorLook();
 }
 
-chatForm.addEventListener('submit', async (e) => {
-    e.preventDefault();
+function renderizarAccesorios() {
+    const accesorios = [...prendasPorTipo('accesorio'), ...prendasPorTipo('otro')];
+    const cont = document.getElementById('look-accesorios');
+    cont.innerHTML = '';
 
-    const pregunta = chatInput.value.trim();
-    if (!pregunta) return;
+    accesorios.forEach(a => {
+        const incluido = accesoriosIncluidos.has(a.id);
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'look-accesorio-btn' + (incluido ? ' activo' : '');
+        btn.setAttribute('aria-label', a.nombre + (incluido ? ' (incluido en el look)' : ' (no incluido)'));
+        btn.setAttribute('aria-pressed', incluido ? 'true' : 'false');
+        btn.innerHTML = a.foto
+            ? `<img src="${a.foto}" alt="">`
+            : `<i class="fa-solid ${TIPO_ICONS[a.tipo] || 'fa-tag'}" aria-hidden="true"></i>`;
+        btn.addEventListener('click', () => {
+            if (accesoriosIncluidos.has(a.id)) {
+                accesoriosIncluidos.delete(a.id);
+            } else {
+                accesoriosIncluidos.add(a.id);
+            }
+            renderizarAccesorios();
+        });
+        cont.appendChild(btn);
+    });
+}
 
-    const armario = cargarArmario();
+function actualizarContadorLook() {
+    const counter = document.getElementById('look-counter');
+    const nCamisas = prendasPorTipo('camisa').length;
+    const nPantalones = prendasPorTipo('pantalon').length;
+    const nZapatos = prendasPorTipo('zapatos').length;
+    const total = nCamisas * nPantalones * nZapatos;
 
-    if (armario.length === 0) {
-        anadirBurbuja('Antes añade alguna prenda a tu armario, así tengo con qué combinar.', 'system');
-        chatInput.value = '';
+    if (total === 0) {
+        counter.textContent = 'Añade al menos una camisa, un pantalón y unos zapatos';
         return;
     }
 
-    anadirBurbuja(pregunta, 'user');
-    mensajesChat.push({ role: 'user', content: pregunta });
-    chatInput.value = '';
-    chatInput.disabled = true;
+    const actual = lookIndices.camisa * nPantalones * nZapatos + lookIndices.pantalon * nZapatos + lookIndices.zapatos + 1;
+    counter.textContent = `Look ${actual} de ${total}`;
+}
 
-    const indicador = anadirIndicadorEscribiendo();
-
-    // No hace falta mandar la foto: el chatbot solo necesita nombre, tipo y color.
-    const armarioSinFotos = armario.map(({ nombre, tipo, color }) => ({ nombre, tipo, color }));
-
-    try {
-        const response = await fetch(CHAT_ENDPOINT, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                armario: armarioSinFotos,
-                daltonismo: cargarDaltonismo() || null,
-                mensajes: mensajesChat,
-            }),
-        });
-
-        if (!response.ok) {
-            throw new Error(`la función respondió con un error (${response.status})`);
-        }
-
-        const data = await response.json();
-
-        if (!data.respuesta) {
-            throw new Error('la respuesta no tuvo el formato esperado.');
-        }
-
-        indicador.remove();
-        anadirBurbuja(data.respuesta, 'bot');
-        mensajesChat.push({ role: 'assistant', content: data.respuesta });
-    } catch (err) {
-        indicador.remove();
-        anadirBurbuja(`No he podido responder. ${err.message}`, 'bot chat-bubble-error');
-    } finally {
-        chatInput.disabled = false;
-        chatInput.focus();
-    }
+lookWindow.addEventListener('click', (e) => {
+    const btn = e.target.closest('.look-arrow');
+    if (!btn) return;
+    const tipo = btn.closest('.look-panel').dataset.tipo;
+    const prendas = prendasPorTipo(tipo);
+    if (prendas.length === 0) return;
+    const delta = btn.classList.contains('look-arrow-next') ? 1 : -1;
+    lookIndices[tipo] = (lookIndices[tipo] + delta + prendas.length) % prendas.length;
+    renderizarLook();
 });
 
+document.getElementById('look-aleatorio').addEventListener('click', () => {
+    LOOK_TIPOS.forEach(tipo => {
+        const n = prendasPorTipo(tipo).length;
+        if (n > 0) lookIndices[tipo] = Math.floor(Math.random() * n);
+    });
+    renderizarLook();
+});
+
+document.getElementById('look-guardar').addEventListener('click', () => {
+    const camisa = prendasPorTipo('camisa')[lookIndices.camisa];
+    const pantalon = prendasPorTipo('pantalon')[lookIndices.pantalon];
+    const zapatos = prendasPorTipo('zapatos')[lookIndices.zapatos];
+
+    if (!camisa || !pantalon || !zapatos) {
+        mostrarEstadoLook('Te faltan prendas para completar un look.');
+        return;
+    }
+
+    const looks = cargarLooks();
+    looks.push({
+        id: Date.now(),
+        camisaId: camisa.id,
+        pantalonId: pantalon.id,
+        zapatosId: zapatos.id,
+        accesorios: [...accesoriosIncluidos],
+        fecha: Date.now(),
+    });
+    guardarLooks(looks);
+    actualizarContadores();
+    renderizarLooksGuardados();
+    mostrarEstadoLook('¡Look guardado!');
+});
+
+document.getElementById('look-wear').addEventListener('click', () => {
+    mostrarEstadoLook('¡Look puesto! Que tengas un buen día.');
+});
+
+aplicarAvatarGuardado();
 renderizarArmario();
