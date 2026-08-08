@@ -1,0 +1,7 @@
+{
+  "name": "combina-sin-confundir-api",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Función serverless que conecta la app Combina sin Confundir con la API gratuita de Google Gemini.",
+  "dependencies": {}
+}

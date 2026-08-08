@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Combina sin Confundir | Ana Almudi</title>
+    <meta name="description" content="Combina sin Confundir: tu armario virtual con un chatbot que te ayuda a combinar la ropa que has subido, tengas o no daltonismo.">
+    <link rel="shortcut icon" href="../imagenes/icons/logocolor.png">
+    <link rel="icon" href="../imagenes/icons/logocolor.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;700&family=Bebas+Neue&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/moda.css">
+    <script src="../js/moda.js" defer></script>
+</head>
+
+<body>
+    <header class="main-header container">
+        <div class="header-left">
+            <a href="../html/index.html" aria-label="logo Ana Almudi">
+                <img src="../imagenes/icons/newlogo.png" alt="Logo" class="site-logo">
+            </a>
+        </div>
+        <nav class="header-nav" id="main-nav">
+            <a href="../html/interiores.html">Diseño de interiores</a>
+            <a href="../html/dibujos.html">Dibujos</a>
+            <a href="../html/disenyoweb.html">Desarrollo web</a>
+            <a href="../html/moda.html" class="active">Moda</a>
+            <a href="../html/sobremi.html">Sobre mí</a>
+        </nav>
+        <div class="header-right">
+            <a href="../html/index.html#contacto" class="icon-mail" aria-label="Enviar un correo electrónico de contacto">
+                <i class="fa-regular fa-envelope"></i>
+            </a>
+            <button class="hamburger" id="hamburger" aria-label="Abrir menú">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <main class="container">
+
+        <section class="page-hero">
+            <span class="page-badge">Proyecto personal</span>
+            <h1 class="page-title">Combina sin Confundir</h1>
+            <p class="page-subtitle">Tu armario virtual con un chatbot integrado: sube tu ropa y pregúntale qué combinar, tengas o no daltonismo.</p>
+        </section>
+
+        <section class="moda-section" aria-labelledby="perfil-title">
+            <h2 id="perfil-title" class="moda-section-title">1. Tu perfil <span class="opcional-tag">opcional</span></h2>
+            <p class="section-help">Si tienes daltonismo, indícanoslo para que el chatbot evite combinaciones de color difíciles de distinguir para ti. Si no, no pasa nada, puedes dejarlo desactivado.</p>
+
+            <div class="perfil-box">
+                <label class="toggle-switch">
+                    <input type="checkbox" id="daltonismo-toggle">
+                    <span class="toggle-track" aria-hidden="true"></span>
+                    <span class="toggle-label">Tengo daltonismo</span>
+                </label>
+
+                <div id="daltonismo-tipo-wrap" class="daltonismo-tipo-wrap" hidden>
+                    <label for="daltonismo-select">¿Qué tipo?</label>
+                    <select id="daltonismo-select" class="input-grey">
+                        <option value="protanopia">Protanopia (dificultad con el rojo)</option>
+                        <option value="deuteranopia">Deuteranopia (dificultad con el verde)</option>
+                        <option value="tritanopia">Tritanopia (dificultad con el azul/amarillo)</option>
+                    </select>
+                </div>
+
+                <p id="perfil-guardado" class="perfil-status" role="status" aria-live="polite"></p>
+            </div>
+        </section>
+
+        <section class="moda-section" aria-labelledby="armario-title">
+            <h2 id="armario-title" class="moda-section-title">2. Tu armario</h2>
+
+            <form id="prenda-form" class="prenda-form">
+                <div class="prenda-form-row">
+                    <div class="form-field">
+                        <label for="prenda-nombre">Nombre</label>
+                        <input type="text" id="prenda-nombre" class="input-grey" placeholder="Ej: camisa de cuadros" required>
+                    </div>
+                    <div class="form-field">
+                        <label for="prenda-tipo">Tipo</label>
+                        <select id="prenda-tipo" class="input-grey" required>
+                            <option value="camisa">Camisa / camiseta</option>
+                            <option value="pantalon">Pantalón / falda</option>
+                            <option value="zapatos">Zapatos</option>
+                            <option value="accesorio">Accesorio</option>
+                            <option value="otro">Otro</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="prenda-form-row">
+                    <div class="form-field">
+                        <label for="prenda-color">Color (nombre, ej. "azul marino")</label>
+                        <input type="text" id="prenda-color" class="input-grey" placeholder="Ej: azul marino" required>
+                    </div>
+                    <div class="form-field">
+                        <label for="prenda-foto">Foto (opcional)</label>
+                        <input type="file" id="prenda-foto" class="input-file" accept="image/*">
+                    </div>
+                </div>
+                <button type="submit" class="btn-retro">Añadir prenda</button>
+            </form>
+
+            <ul id="closet-list" class="closet-list" aria-label="Prendas guardadas en tu armario"></ul>
+            <p id="closet-vacio" class="closet-empty">Todavía no has añadido ninguna prenda.</p>
+        </section>
+
+        <section class="moda-section" aria-labelledby="chat-title">
+            <h2 id="chat-title" class="moda-section-title">3. Pregúntale a tu armario</h2>
+            <p class="section-help">Escríbele como a un amigo con buen ojo: "¿qué me pongo con los vaqueros?", "combina la chaqueta roja", "dame un look para una cena"...</p>
+
+            <div class="chat-box">
+                <div id="chat-log" class="chat-log" role="log" aria-live="polite" aria-label="Conversación con tu armario"></div>
+                <form id="chat-form" class="chat-form">
+                    <label for="chat-input" class="visually-hidden">Escribe tu pregunta</label>
+                    <input type="text" id="chat-input" class="input-grey" placeholder="Ej: ¿qué me pongo con la chaqueta vaquera?" autocomplete="off" required>
+                    <button type="submit" class="btn-retro btn-chat-send" aria-label="Enviar pregunta">
+                        <i class="fa-solid fa-paper-plane" aria-hidden="true"></i>
+                    </button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container footer-grid">
+            <p>Si quieres ver más novedades de lo que voy haciendo puedes seguirme en mis siguientes redes sociales:</p>
+            <div class="social-icons">
+                <a href="https://github.com/Annii009" aria-label="Visitar mi perfil de GitHub"><i class="fa-brands fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/ana-hernandez-almudi-4877a1242?utm_source=share_via&utm_content=profile&utm_medium=member_ios" aria-label="Visitar mi perfil de LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                <a href="https://www.instagram.com/ana.almudi/" aria-label="Visitar mi perfil de Instagram"><i class="fa-brands fa-instagram"></i></a>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
