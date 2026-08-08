@@ -39,6 +39,8 @@ const ERRORES_AUTH = {
     'auth/user-not-found': 'No existe ninguna cuenta con ese email.',
     'auth/wrong-password': 'Contraseña incorrecta.',
     'auth/invalid-credential': 'Email o contraseña incorrectos.',
+    'auth/unauthorized-domain': 'Este dominio no está autorizado todavía en Firebase (Authentication → Settings → Authorized domains).',
+    'auth/popup-closed-by-user': 'Has cerrado la ventana de Google antes de terminar.',
 };
 
 const hamburger = document.getElementById('hamburger');
