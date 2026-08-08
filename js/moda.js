@@ -1,48 +1,3 @@
-import { initializeApp } from 'https://www.gstatic.com/firebasejs/12.17.1/firebase-app.js';
-import {
-    getAuth,
-    createUserWithEmailAndPassword,
-    signInWithEmailAndPassword,
-    GoogleAuthProvider,
-    signInWithPopup,
-    signOut,
-    onAuthStateChanged,
-} from 'https://www.gstatic.com/firebasejs/12.17.1/firebase-auth.js';
-import {
-    getFirestore,
-    doc,
-    setDoc,
-    collection,
-    addDoc,
-    deleteDoc,
-    onSnapshot,
-} from 'https://www.gstatic.com/firebasejs/12.17.1/firebase-firestore.js';
-
-const FIREBASE_CONFIG = {
-    apiKey: 'AIzaSyACKSaMGeBD3lcMdwP0xNK3OaX00vIiwMo',
-    authDomain: 'combina-sin-confundir-app.firebaseapp.com',
-    projectId: 'combina-sin-confundir-app',
-    storageBucket: 'combina-sin-confundir-app.firebasestorage.app',
-    messagingSenderId: '490099350327',
-    appId: '1:490099350327:web:1484bfeae6579cb4fe98b2',
-};
-
-const firebaseApp = initializeApp(FIREBASE_CONFIG);
-const auth = getAuth(firebaseApp);
-const db = getFirestore(firebaseApp);
-const googleProvider = new GoogleAuthProvider();
-
-const ERRORES_AUTH = {
-    'auth/email-already-in-use': 'Ya existe una cuenta con ese email.',
-    'auth/invalid-email': 'El email no es válido.',
-    'auth/weak-password': 'La contraseña debe tener al menos 6 caracteres.',
-    'auth/user-not-found': 'No existe ninguna cuenta con ese email.',
-    'auth/wrong-password': 'Contraseña incorrecta.',
-    'auth/invalid-credential': 'Email o contraseña incorrectos.',
-    'auth/unauthorized-domain': 'Este dominio no está autorizado todavía en Firebase (Authentication → Settings → Authorized domains).',
-    'auth/popup-closed-by-user': 'Has cerrado la ventana de Google antes de terminar.',
-};
-
 const hamburger = document.getElementById('hamburger');
 const nav = document.getElementById('main-nav');
 
@@ -66,6 +21,11 @@ if (hamburger && nav) {
         }
     });
 }
+
+const LS_ARMARIO = 'csc_armario';
+const LS_DALTONISMO = 'csc_daltonismo';
+const LS_AVATAR = 'csc_avatar';
+const LS_LOOKS = 'csc_looks';
 
 const TIPO_LABELS = {
     camisa: 'Camisa / camiseta',
@@ -121,23 +81,28 @@ async function quitarFondoSiSePuede(file) {
     }
 }
 
-let uidActual = null;
-let armarioCache = [];
-let looksCache = [];
-let daltonismoCache = '';
-let avatarCache = null;
-let desuscriptores = [];
-
 function cargarArmario() {
-    return armarioCache;
+    try {
+        return JSON.parse(localStorage.getItem(LS_ARMARIO)) || [];
+    } catch {
+        return [];
+    }
+}
+
+function guardarArmario(armario) {
+    localStorage.setItem(LS_ARMARIO, JSON.stringify(armario));
 }
 
 function cargarLooks() {
-    return looksCache;
+    try {
+        return JSON.parse(localStorage.getItem(LS_LOOKS)) || [];
+    } catch {
+        return [];
+    }
 }
 
-function cargarDaltonismo() {
-    return daltonismoCache;
+function guardarLooks(looks) {
+    localStorage.setItem(LS_LOOKS, JSON.stringify(looks));
 }
 
 function prendasPorTipo(tipo) {
@@ -194,7 +159,11 @@ function renderizarLooksGuardados() {
 document.getElementById('looks-list').addEventListener('click', (e) => {
     const btn = e.target.closest('.look-card-borrar');
     if (!btn) return;
-    deleteDoc(doc(db, 'usuarios', uidActual, 'looks', btn.dataset.id));
+    const id = btn.dataset.id;
+    const looks = cargarLooks().filter(l => String(l.id) !== id);
+    guardarLooks(looks);
+    renderizarLooksGuardados();
+    actualizarContadores();
 });
 
 function actualizarContadores() {
@@ -215,13 +184,11 @@ const avatarImg = document.getElementById('avatar-img');
 const avatarIcon = document.getElementById('avatar-icon');
 
 function aplicarAvatarGuardado() {
-    if (avatarCache) {
-        avatarImg.src = avatarCache;
+    const avatar = localStorage.getItem(LS_AVATAR);
+    if (avatar) {
+        avatarImg.src = avatar;
         avatarImg.hidden = false;
         avatarIcon.hidden = true;
-    } else {
-        avatarImg.hidden = true;
-        avatarIcon.hidden = false;
     }
 }
 
@@ -230,7 +197,8 @@ avatarCircle.addEventListener('click', () => avatarInput.click());
 avatarInput.addEventListener('change', async () => {
     if (!avatarInput.files[0]) return;
     const avatar = await redimensionarImagen(avatarInput.files[0], 160);
-    await setDoc(doc(db, 'usuarios', uidActual), { avatar }, { merge: true });
+    localStorage.setItem(LS_AVATAR, avatar);
+    aplicarAvatarGuardado();
 });
 
 function renderizarArmario() {
@@ -270,7 +238,10 @@ function renderizarArmario() {
 document.getElementById('closet-list').addEventListener('click', (e) => {
     const btn = e.target.closest('.closet-tile-borrar');
     if (!btn) return;
-    deleteDoc(doc(db, 'usuarios', uidActual, 'prendas', btn.dataset.id));
+    const id = btn.dataset.id;
+    const armario = cargarArmario().filter(p => String(p.id) !== id);
+    guardarArmario(armario);
+    renderizarArmario();
 });
 
 document.getElementById('prenda-form').addEventListener('submit', async (e) => {
@@ -297,13 +268,10 @@ document.getElementById('prenda-form').addEventListener('submit', async (e) => {
         boton.disabled = false;
     }
 
-    await addDoc(collection(db, 'usuarios', uidActual, 'prendas'), {
-        nombre,
-        tipo,
-        color,
-        foto,
-        creadoEn: Date.now(),
-    });
+    const armario = cargarArmario();
+    armario.push({ id: Date.now(), nombre, tipo, color, foto });
+    guardarArmario(armario);
+    renderizarArmario();
 
     e.target.reset();
 });
@@ -315,6 +283,10 @@ const simularWrap = document.getElementById('simular-wrap');
 const simularToggle = document.getElementById('simular-toggle');
 const closetList = document.getElementById('closet-list');
 const lookWindow = document.getElementById('look-window');
+
+function cargarDaltonismo() {
+    return localStorage.getItem(LS_DALTONISMO) || '';
+}
 
 function aplicarEstadoDaltonismo(valorGuardado) {
     if (valorGuardado) {
@@ -331,9 +303,12 @@ function aplicarEstadoDaltonismo(valorGuardado) {
     }
 }
 
-async function guardarDaltonismoActual() {
+aplicarEstadoDaltonismo(cargarDaltonismo());
+
+function guardarDaltonismoActual() {
     const valor = daltonismoToggle.checked ? daltonismoSelect.value : '';
-    await setDoc(doc(db, 'usuarios', uidActual), { daltonismo: valor }, { merge: true });
+    localStorage.setItem(LS_DALTONISMO, valor);
+    aplicarEstadoDaltonismo(valor);
 
     const status = document.getElementById('perfil-guardado');
     status.textContent = 'Perfil guardado.';
@@ -454,7 +429,7 @@ document.getElementById('look-aleatorio').addEventListener('click', () => {
     renderizarLook();
 });
 
-document.getElementById('look-guardar').addEventListener('click', async () => {
+document.getElementById('look-guardar').addEventListener('click', () => {
     const camisa = prendasPorTipo('camisa')[lookIndices.camisa];
     const pantalon = prendasPorTipo('pantalon')[lookIndices.pantalon];
     const zapatos = prendasPorTipo('zapatos')[lookIndices.zapatos];
@@ -464,13 +439,18 @@ document.getElementById('look-guardar').addEventListener('click', async () => {
         return;
     }
 
-    await addDoc(collection(db, 'usuarios', uidActual, 'looks'), {
+    const looks = cargarLooks();
+    looks.push({
+        id: Date.now(),
         camisaId: camisa.id,
         pantalonId: pantalon.id,
         zapatosId: zapatos.id,
         accesorios: [...accesoriosIncluidos],
         fecha: Date.now(),
     });
+    guardarLooks(looks);
+    actualizarContadores();
+    renderizarLooksGuardados();
     mostrarEstadoLook('¡Look guardado!');
 });
 
@@ -478,98 +458,5 @@ document.getElementById('look-wear').addEventListener('click', () => {
     mostrarEstadoLook('¡Look puesto! Que tengas un buen día.');
 });
 
-const loginGate = document.getElementById('login-gate');
-const appContenido = document.getElementById('app-contenido');
-const loginForm = document.getElementById('login-form');
-const btnLogin = document.getElementById('btn-login');
-const btnRegistrar = document.getElementById('btn-registrar');
-const btnLogout = document.getElementById('btn-logout');
-const cuentaNombre = document.getElementById('cuenta-nombre');
-const loginStatus = document.getElementById('login-status');
-
-let modoRegistro = false;
-
-btnRegistrar.addEventListener('click', () => {
-    modoRegistro = !modoRegistro;
-    btnLogin.textContent = modoRegistro ? 'Crear cuenta' : 'Iniciar sesión';
-    btnRegistrar.textContent = modoRegistro ? '¿Ya tienes cuenta? Inicia sesión' : '¿No tienes cuenta? Regístrate';
-    loginStatus.textContent = '';
-});
-
-loginForm.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const email = document.getElementById('login-email').value.trim();
-    const password = document.getElementById('login-password').value;
-
-    loginStatus.textContent = '';
-    try {
-        if (modoRegistro) {
-            await createUserWithEmailAndPassword(auth, email, password);
-        } else {
-            await signInWithEmailAndPassword(auth, email, password);
-        }
-    } catch (err) {
-        loginStatus.textContent = ERRORES_AUTH[err.code] || 'No se pudo completar la operación. Inténtalo de nuevo.';
-        console.error(err);
-    }
-});
-
-document.getElementById('btn-login-google').addEventListener('click', async () => {
-    loginStatus.textContent = '';
-    try {
-        await signInWithPopup(auth, googleProvider);
-    } catch (err) {
-        loginStatus.textContent = ERRORES_AUTH[err.code] || 'No se pudo iniciar sesión con Google. Inténtalo de nuevo.';
-        console.error(err);
-    }
-});
-
-btnLogout.addEventListener('click', () => signOut(auth));
-
-function limpiarSuscripciones() {
-    desuscriptores.forEach(fn => fn());
-    desuscriptores = [];
-}
-
-function suscribirDatos(uid) {
-    const unsubPerfil = onSnapshot(doc(db, 'usuarios', uid), snap => {
-        const datos = snap.data() || {};
-        daltonismoCache = datos.daltonismo || '';
-        avatarCache = datos.avatar || null;
-        aplicarAvatarGuardado();
-        aplicarEstadoDaltonismo(daltonismoCache);
-        actualizarContadores();
-    });
-
-    const unsubPrendas = onSnapshot(collection(db, 'usuarios', uid, 'prendas'), snap => {
-        armarioCache = snap.docs.map(d => ({ id: d.id, ...d.data() }));
-        renderizarArmario();
-    });
-
-    const unsubLooks = onSnapshot(collection(db, 'usuarios', uid, 'looks'), snap => {
-        looksCache = snap.docs.map(d => ({ id: d.id, ...d.data() }));
-        renderizarLooksGuardados();
-        actualizarContadores();
-    });
-
-    desuscriptores = [unsubPerfil, unsubPrendas, unsubLooks];
-}
-
-onAuthStateChanged(auth, user => {
-    if (user) {
-        uidActual = user.uid;
-        cuentaNombre.textContent = user.displayName || user.email || '';
-        loginGate.hidden = true;
-        appContenido.hidden = false;
-        suscribirDatos(user.uid);
-    } else {
-        limpiarSuscripciones();
-        uidActual = null;
-        armarioCache = [];
-        looksCache = [];
-        daltonismoCache = '';
-        avatarCache = null;
-        loginGate.hidden = false;
-        appContenido.hidden = true;
-    }
-});
+aplicarAvatarGuardado();
+renderizarArmario();
