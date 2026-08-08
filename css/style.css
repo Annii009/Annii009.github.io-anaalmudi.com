@@ -46,17 +46,6 @@ body {
     text-decoration: none;
 }
 
-.nav-link {
-    color: var(--black);
-    font-weight: 700;
-    text-decoration: none;
-    font-size: 0.95rem;
-}
-
-.nav-link:hover {
-    color: var(--red);
-}
-
 .hero-layout {
     display: flex;
     justify-content: space-between;
@@ -144,6 +133,11 @@ body {
 .btn-arte {
     top: 40px;
     left: -10px;
+}
+
+.btn-moda {
+    top: -25px;
+    right: 50px;
 }
 
 .btn-desarrollo {
@@ -329,6 +323,11 @@ textarea {
     .btn-arte {
         top: 10px;
         left: -10px;
+    }
+
+    .btn-moda {
+        top: 10px;
+        right: -10px;
     }
 
     .btn-desarrollo {
