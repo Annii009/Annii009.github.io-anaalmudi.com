@@ -13,7 +13,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;700&family=Bebas+Neue&family=Space+Mono:wght@400;700&family=Press+Start+2P&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="../css/moda.css">
-    <script src="../js/moda.js" defer></script>
+    <script type="module" src="../js/moda.js"></script>
 </head>
 
 <body>
@@ -63,6 +63,37 @@
             <h1 class="page-title">Combina tu moda</h1>
             <p class="page-subtitle">Tu armario cápsula virtual: sube tus prendas, monta tu look del día y simula cómo se vería para distintos tipos de daltonismo.</p>
         </section>
+
+        <div id="login-gate" class="login-gate">
+            <div class="login-card">
+                <i class="fa-solid fa-lock" aria-hidden="true"></i>
+                <h2>Inicia sesión para ver tu armario</h2>
+                <p>Así tus prendas y tus looks se guardan en tu cuenta y los tienes en cualquier dispositivo.</p>
+                <form id="login-form" class="login-form">
+                    <label for="login-email" class="visually-hidden">Email</label>
+                    <input type="email" id="login-email" class="input-grey" placeholder="Email" autocomplete="email" required>
+                    <label for="login-password" class="visually-hidden">Contraseña</label>
+                    <input type="password" id="login-password" class="input-grey" placeholder="Contraseña" autocomplete="current-password" minlength="6" required>
+                    <button type="submit" class="btn-retro" id="btn-login">Iniciar sesión</button>
+                </form>
+                <button type="button" id="btn-registrar" class="login-link">¿No tienes cuenta? Regístrate</button>
+
+                <div class="login-separador"><span>o</span></div>
+
+                <button type="button" id="btn-login-google" class="btn-retro btn-google">
+                    <i class="fa-brands fa-google" aria-hidden="true"></i> Continuar con Google
+                </button>
+
+                <p id="login-status" class="perfil-status" role="status" aria-live="polite"></p>
+            </div>
+        </div>
+
+        <div id="app-contenido" hidden>
+
+            <div class="cuenta-barra">
+                <span id="cuenta-nombre" class="cuenta-nombre"></span>
+                <button type="button" id="btn-logout" class="cuenta-logout">Cerrar sesión</button>
+            </div>
 
         <section class="moda-section" aria-labelledby="perfil-title">
             <h2 id="perfil-title" class="moda-section-title">1. Tu perfil <span class="opcional-tag">opcional</span></h2>
@@ -202,6 +233,8 @@
                 </div>
             </div>
         </section>
+
+        </div>
     </main>
 
     <footer class="main-footer">

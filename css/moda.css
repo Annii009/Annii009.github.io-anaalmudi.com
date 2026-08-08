@@ -193,6 +193,132 @@ body {
     line-height: 1.5;
 }
 
+.login-gate {
+    display: flex;
+    justify-content: center;
+    padding: 60px 0;
+}
+
+.login-card {
+    max-width: 420px;
+    text-align: center;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 40px 32px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+}
+
+.login-card i.fa-lock {
+    font-size: 1.8rem;
+    color: var(--red);
+    margin-bottom: 14px;
+}
+
+.login-card h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.6rem;
+    letter-spacing: 0.5px;
+    margin-bottom: 10px;
+}
+
+.login-card p {
+    color: var(--text-grey);
+    margin-bottom: 22px;
+    line-height: 1.5;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    text-align: left;
+}
+
+.login-card .btn-retro {
+    align-self: center;
+    margin-top: 4px;
+}
+
+.login-link {
+    display: block;
+    margin: 16px auto 0;
+    background: none;
+    border: none;
+    color: var(--text-grey);
+    font-size: 0.85rem;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.login-link:hover {
+    color: var(--red);
+}
+
+.login-separador {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 22px 0 16px;
+    color: var(--text-grey);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+}
+
+.login-separador::before,
+.login-separador::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: #ddd;
+}
+
+.btn-google {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    background: white;
+    color: var(--black);
+    border: 1px solid #ddd;
+}
+
+.btn-google:hover {
+    background: var(--bg);
+    opacity: 1;
+}
+
+.cuenta-barra {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 20px;
+}
+
+.cuenta-nombre {
+    font-size: 0.9rem;
+    color: var(--text-grey);
+}
+
+.cuenta-logout {
+    background: none;
+    border: 1px solid var(--grey);
+    border-radius: 20px;
+    padding: 6px 16px;
+    font-family: 'Archivo', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--black);
+    cursor: pointer;
+}
+
+.cuenta-logout:hover {
+    border-color: var(--red);
+    color: var(--red);
+}
+
 .perfil-box {
     max-width: 420px;
     display: flex;
